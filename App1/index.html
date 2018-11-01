@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>QLBH Client</title>
+		<meta charset="utf-8">
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+	</head>
+	<body>
+		<br>
+		<br>
+		<br>
+		<div class="container-fluid">
+			<div class="form-group">
+				<label for="name">Họ tên:</label>
+				<input type="text" class="form-control" id="name">
+			</div>
+			<div class="form-group">
+				<label for="phone">Số điện thoại:</label>
+				<div >
+					<input type="text" class="form-control" id="phone">
+				</div>
+
+
+			</div>
+			<div class="form-group">
+				<label for="address">Địa chỉ:</label>
+				<div >
+					<input type="text" class="form-control" id="address">
+				</div>
+			</div>
+
+            <div class="form-group">
+                <label for="note">Ghi chú:</label>
+                <div >
+                    <input type="text" class="form-control" id="note">
+                </div>
+            </div>
+
+
+			<button type="button" class="btn btn-success" id="btnSubmit">Đặt xe</button>
+		</div>
+		<script id="vietnamese-template" type="text/x-handlebars-template">
+			<input type="text" class="form-control" value="{{vietnamese}}">
+		</script>
+		<script id="fail-template" type="text/x-handlebars-template">
+			<div style="color: red;">Không tìm thấy từ cần tra trong từ điển</div>
+
+		</script>
+		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
+		<script src="index.app.js"></script>
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	</body>
+</html>
