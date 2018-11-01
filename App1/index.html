@@ -2,43 +2,78 @@
 <html>
 	<head>
 		<title>QLBH Client</title>
-		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	</head>
+	<style>
+		body, html {
+			height: 100%;
+			font-family: Arial, Helvetica, sans-serif;
+		}		
+		* {
+			box-sizing: border-box;
+		}		
+		.bg-img {
+			background-image: url("../Image/Background.jpg");
+			/* background-color: #4CAF50; */
+			height: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: relative;
+		}
+		.container {
+			position: absolute;
+			left: 30px;
+			margin: 40px;
+			max-width: 600px;
+			padding: 80px;
+			background-color: white;
+			border-radius: 10px;
+		}						
+		input[type=text], input[type=password] {
+			width: 100%;
+			padding: 15px;
+			margin: 5px 0 22px 0;
+			border: none;
+			background: #f1f1f1;
+		}						
+		.btn {
+			background-color:red;
+			color: rgb(255, 255, 255);
+			padding: 16px 20px;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+			opacity: 0.9;
+		}			
+		.btn:hover {
+			opacity: 1;
+		}
+	</style>
 	<body>
-		<br>
-		<br>
-		<br>
-		<div class="container-fluid">
-			<div class="form-group">
-				<label for="name">Họ tên:</label>
-				<input type="text" class="form-control" id="name">
+			<!-- <div class="jumbotron">
+					<h1 style="text-align:center; color:blue">Ứng Dụng Đặt Xe Online</h1> 
+			</div> -->
+			<div class="bg-img">
+			<form  class="container">
+				<h2 style="text-align:center">Nhận Thông Tin Khách Hàng</h2>
+
+				<label for="name"><b>Họ Tên Khách Hàng</b></label>
+				<input type="text" placeholder="Tên khách hàng" id="name" >
+
+				<label for="phone"><b>Số điện thoại</b></label>
+				<input type="text" placeholder="+84... " id="phone" >
+				
+				<label for="address"><b>Địa chỉ</b></label>
+				<input type="text" placeholder="Địa chỉ" id="address" >
+				
+				<label for="note"><b>Ghi chú</b></label>
+				<input type="text" placeholder="Ghi chú" id="note" >
+
+				<button type="submit" class="btn btn-success" id="btnSubmit">Nhận Chuyến</button>
+			</form>
 			</div>
-			<div class="form-group">
-				<label for="phone">Số điện thoại:</label>
-				<div >
-					<input type="text" class="form-control" id="phone">
-				</div>
-
-
-			</div>
-			<div class="form-group">
-				<label for="address">Địa chỉ:</label>
-				<div >
-					<input type="text" class="form-control" id="address">
-				</div>
-			</div>
-
-            <div class="form-group">
-                <label for="note">Ghi chú:</label>
-                <div >
-                    <input type="text" class="form-control" id="note">
-                </div>
-            </div>
-
-
-			<button type="button" class="btn btn-success" id="btnSubmit">Đặt xe</button>
-		</div>
 		<script id="vietnamese-template" type="text/x-handlebars-template">
 			<input type="text" class="form-control" value="{{vietnamese}}">
 		</script>
@@ -50,6 +85,5 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
 		<script src="index.app.js"></script>
-        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 	</body>
 </html>
