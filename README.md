@@ -1,2 +1,2 @@
-# CMN_DAGK
+# CNM_DAGK
 Môn công nghệ mới -  đồ án giữa kì
