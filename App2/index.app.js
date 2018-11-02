@@ -2,11 +2,7 @@ window.onload = function() {
     vm.setupSSE();
     //vm.initMap();
     // loadCategories();
-
-
 };
-
-
 var vm = new Vue({
     el: '#container',
     data: {
@@ -48,7 +44,6 @@ var vm = new Vue({
                 }).then(function () {
                     self.getAllRequest();
             })
-
         },
         getAllRequest:function(){
             var self = this;
@@ -69,9 +64,7 @@ var vm = new Vue({
                         })
                         return;
                     }
-
                 }).then(function () {
-
             });
         },
         refreshToken:function () {
@@ -82,7 +75,6 @@ var vm = new Vue({
             })
                 .then(function (response) {
                     self.token=response.data.access_token;
-
                 })
                 .catch(function (error) {
                     if (error.response.status===401){
@@ -91,7 +83,6 @@ var vm = new Vue({
                         self.mapVisible=false;
                     }
                 }).then(function () {
-
             })
         },
         setupSSE : function() {
@@ -106,7 +97,6 @@ var vm = new Vue({
             add.onerror = function(e) {
                 console.log('error: ' + e);
             }
-
             add.addEventListener('REQUEST_ADDED', function(e) {
                 var data = JSON.parse(e.data);
                 self.requests.push(data);
@@ -126,12 +116,10 @@ var vm = new Vue({
 
                 console.log('error: ' + e);
             }
-
             remove.addEventListener('REQUEST_REMOVE', function(e) {
                 var data = JSON.parse(e.data);
                 self.getAllRequest();
             }, false);
-
         },
         refDataTable:function () {
             new Promise(function (resolve,reject) {
@@ -178,7 +166,6 @@ var vm = new Vue({
                     self.address="18/13 Trần Văn Thành"
                 }
             });
-
         },
         editGeocoder:function () {
             // $('#tableDH').DataTable().row().select();
@@ -262,9 +249,7 @@ var vm = new Vue({
             self.msg="";
             self.err=""
         }
-
     }
-
 });
 
 
