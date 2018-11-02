@@ -32,16 +32,25 @@ var subscribeEvent = (req, res, event) => {
 // event pub-sub
 
 var REQUEST_ADDED = 'REQUEST_ADDED';
+var REQUEST_REMOVE = 'REQUEST_REMOVE';
 
 var subscribeRequestAdded = (req, res) => {
     subscribeEvent(req, res, REQUEST_ADDED);
+};
+var subscribeRequestRemove = (req, res) => {
+    subscribeEvent(req, res, REQUEST_REMOVE);
 };
 
 var publishRequestAdded = requestObj => {
     emitter.emit(REQUEST_ADDED, requestObj);
 };
+var publishRequestRemove = requestObj => {
+    emitter.emit(REQUEST_REMOVE, requestObj);
+};
 
 module.exports = {
     subscribeRequestAdded,
-    publishRequestAdded
+    publishRequestAdded,
+    publishRequestRemove,
+    subscribeRequestRemove
 }

@@ -29,6 +29,7 @@ app.use('/api/request', verifyAccessToken, requestCtrl);
 app.use('/app1/', app1Ctrl);
 app.use('/app2/', app2Ctrl);
 app.get('/requestAddedEvent', events.subscribeRequestAdded);
+app.get('/requestRemoveEvent', events.subscribeRequestRemove);
 var port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`QLBH API is running on port ${port}`);

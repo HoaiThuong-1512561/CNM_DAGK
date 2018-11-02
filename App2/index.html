@@ -1,9 +1,10 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>QLBH Client</title>
+		<title>App2 xác định vị trí</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
 	</head>
     <style>
         #map {
@@ -12,6 +13,7 @@
             background-color: grey;
         }
     </style>
+
 	<body>
 
 		<div class="container-fluid" id="container">
@@ -30,7 +32,7 @@
 				<div class="container sp">
 					<div class="panel panel-default">
 						<div class="panel-heading">
-							<h3 class="panel-title">Quản lý đơn hàng</h3>
+							<h3 class="panel-title">Quản lý thông tin đặt xe</h3>
 						</div>
 						<div class="panel-body">
 							<span> </span>
@@ -45,7 +47,7 @@
 										<th><a>Ghi chú</a></th>
 										<th><a>Ngày đặt</a></th>
 										<th><a>Trạng Thái</a></th>
-                                        <th><a>Xác định vị trí</a></th>
+
 
 									</tr>
 									</thead>
@@ -57,8 +59,7 @@
 										<td>{{c.address}}</td>
 										<td>{{c.note}} </td>
 										<td>{{c.time}} </td>
-										<td>Chưa xác nhận</td>
-                                        <td><button class="btn btn-success" type="button">Định vị</button></td>
+										<td style="color: red">Chưa xác nhận vị trí</td>
 									</tr>
 									</tbody>
 								</table>
@@ -66,17 +67,17 @@
 							</div>
 						</div>
 					</div>
-
-						<button class="btn btn-success" type="button" @click="getAllRequest">Reload</button>
-
-
+					<button class="btn btn-success" type="button" @click="editGeocoder">Định vị</button>
 				</div>
 			</div>
-            <div id="Gmap">
+            <div id="Gmap" v-if="mapVisible">
+				<div>Địa chỉ: {{address}}</div>
+				<div style="color: green">{{msg}}</div>
+				<div style="color: red">{{err}}</div>
                 <div id="map"></div>
+				<button class="btn btn-success" type="button" @click="updateGeocoder">Cập nhật vị trí</button>
+				<button class="btn btn-success" type="button" @click="closeMap">Đóng</button>
             </div>
-
-
 		</div>
 
 		<!--<script src="./js/jquery.min.js"></script>-->
@@ -98,8 +99,7 @@
 		<!--</script>-->
 
 		<script src="https://cdn.jsdelivr.net/npm/vue"></script>
-		<!--<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>-->
-		<!--<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>-->
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
 		<script src="index.app.js"></script>
         <script src="https://unpkg.com/axios/dist/axios.min.js"></script>

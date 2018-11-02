@@ -2,15 +2,18 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7a1aa7e0-0fc8-4d5d-8179-c8142c51c301" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../App1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App1/index.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../App1/index.app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../App1/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../App2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../App2/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../App2/index.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../App2/index.app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../App2/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../App2/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/apiControllers/app1Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/apiControllers/app1Controller.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/apiControllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/apiControllers/requestController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/events.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repos/authRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/repos/authRepo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/repos/requestRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/repos/requestRepo.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -60,14 +63,45 @@
         </counts>
       </usages-collector>
     </session>
+    <session id="349293540">
+      <usages-collector id="statistics.lifecycle.project">
+        <counts>
+          <entry key="project.closed" value="2" />
+          <entry key="project.open.time.2" value="2" />
+          <entry key="project.opened" value="2" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.open">
+        <counts>
+          <entry key="html" value="1" />
+          <entry key="js" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.open">
+        <counts>
+          <entry key="HTML" value="1" />
+          <entry key="JavaScript" value="3" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="js" value="426" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="JavaScript" value="426" />
+        </counts>
+      </usages-collector>
+    </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/repos/authRepo.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1180">
-              <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+            <state relative-caret-position="220">
+              <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
             </state>
           </provider>
         </entry>
@@ -75,8 +109,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apiControllers/requestController.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="200">
-              <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+            <state relative-caret-position="220">
+              <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/repos/requestRepo.js">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="140">
+              <caret line="7" column="96" selection-start-line="7" selection-start-column="96" selection-end-line="7" selection-end-column="96" />
             </state>
           </provider>
         </entry>
@@ -84,8 +127,8 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="274">
-              <caret line="30" column="58" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="58" />
+            <state relative-caret-position="320">
+              <caret line="31" column="62" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
             </state>
           </provider>
         </entry>
@@ -93,17 +136,17 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/events.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="354">
-              <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+            <state relative-caret-position="240">
+              <caret line="45" column="2" lean-forward="true" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/apiControllers/app1Controller.js">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="214">
-              <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+              <caret line="21" column="42" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="42" />
             </state>
           </provider>
         </entry>
@@ -151,15 +194,15 @@
     <option name="CHANGED_PATHS">
       <list>
         <option value="$PROJECT_DIR$/fn/mysql-db.js" />
-        <option value="$PROJECT_DIR$/repos/requestRepo.js" />
-        <option value="$PROJECT_DIR$/apiControllers/requestController.js" />
         <option value="$PROJECT_DIR$/apiControllers/app2Controller.js" />
         <option value="$PROJECT_DIR$/repos/userRepo.js" />
         <option value="$PROJECT_DIR$/apiControllers/userControllers.js" />
-        <option value="$PROJECT_DIR$/repos/authRepo.js" />
+        <option value="$PROJECT_DIR$/apiControllers/app1Controller.js" />
         <option value="$PROJECT_DIR$/app.js" />
         <option value="$PROJECT_DIR$/events.js" />
-        <option value="$PROJECT_DIR$/apiControllers/app1Controller.js" />
+        <option value="$PROJECT_DIR$/apiControllers/requestController.js" />
+        <option value="$PROJECT_DIR$/repos/authRepo.js" />
+        <option value="$PROJECT_DIR$/repos/requestRepo.js" />
       </list>
     </option>
   </component>
@@ -179,8 +222,8 @@
       <path value="$PROJECT_DIR$/package.json" />
     </packageJsonPaths>
   </component>
-  <component name="ProjectFrameBounds" extendedState="7">
-    <option name="x" value="-1546" />
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="-1432" />
     <option name="y" value="-8" />
     <option name="width" value="1554" />
     <option name="height" value="916" />
@@ -193,7 +236,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -206,15 +248,26 @@
               <item name="Server" type="462c0819:PsiDirectoryNode" />
               <item name="apiControllers" type="462c0819:PsiDirectoryNode" />
             </path>
+            <path>
+              <item name="Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="fn" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="Server" type="b2602c69:ProjectViewProjectNode" />
+              <item name="Server" type="462c0819:PsiDirectoryNode" />
+              <item name="repos" type="462c0819:PsiDirectoryNode" />
+            </path>
           </expand>
           <select />
         </subPane>
       </pane>
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../App2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -248,16 +301,18 @@
       <workItem from="1540954682638" duration="4112000" />
       <workItem from="1540976348798" duration="7247000" />
       <workItem from="1541043605940" duration="2801000" />
+      <workItem from="1541127409731" duration="2427000" />
+      <workItem from="1541146670735" duration="7662000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="20316000" />
+    <option name="totallyTimeSpent" value="30405000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1546" y="-8" width="1554" height="916" extended-state="7" />
+    <frame x="-1546" y="-8" width="1554" height="916" extended-state="6" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.15039578" />
+      <window_info content_ui="combo" id="Project" order="0" weight="0.15039578" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="npm" order="2" side_tool="true" />
       <window_info id="Favorites" order="3" side_tool="true" />
@@ -271,7 +326,7 @@
       <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
       <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
       <window_info anchor="bottom" id="Event Log" order="9" side_tool="true" />
-      <window_info anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32950193" />
+      <window_info active="true" anchor="bottom" id="Terminal" order="10" visible="true" weight="0.32950193" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -311,13 +366,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/fn/mysql-db.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="120">
-          <caret line="6" column="21" selection-start-line="6" selection-start-column="21" selection-end-line="6" selection-end-column="21" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apiControllers/orderControllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="180">
@@ -332,13 +380,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repos/requestRepo.js">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="80">
-          <caret line="4" column="19" lean-forward="true" selection-start-line="4" selection-start-column="19" selection-end-line="4" selection-end-column="19" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/apiControllers/productControllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="140">
@@ -346,17 +387,22 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/repos/authRepo.js">
+    <entry file="file://$PROJECT_DIR$/package.json">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1180">
-          <caret line="4" column="35" selection-start-line="4" selection-start-column="35" selection-end-line="4" selection-end-column="35" />
+        <state relative-caret-position="-106" />
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/../App1/index.app.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="100">
+          <caret line="5" column="32" lean-forward="true" selection-start-line="5" selection-start-column="32" selection-end-line="5" selection-end-column="32" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apiControllers/requestController.js">
+    <entry file="file://$PROJECT_DIR$/../App1/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="200">
-          <caret line="10" column="23" selection-start-line="10" selection-start-column="23" selection-end-line="10" selection-end-column="23" />
+        <state relative-caret-position="20">
+          <caret line="73" column="75" selection-start-line="73" selection-start-column="66" selection-end-line="73" selection-end-column="75" />
         </state>
       </provider>
     </entry>
@@ -374,6 +420,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/fn/mysql-db.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="120">
+          <caret line="27" column="14" selection-start-line="27" selection-start-column="8" selection-end-line="27" selection-end-column="14" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/apiControllers/userControllers.js">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="160">
@@ -381,29 +434,45 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/package.json">
+    <entry file="file://$PROJECT_DIR$/apiControllers/app1Controller.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-106" />
+        <state relative-caret-position="214">
+          <caret line="21" column="42" lean-forward="true" selection-start-line="21" selection-start-column="7" selection-end-line="21" selection-end-column="42" />
+        </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="274">
-          <caret line="30" column="58" selection-start-line="30" selection-start-column="37" selection-end-line="30" selection-end-column="58" />
+        <state relative-caret-position="320">
+          <caret line="31" column="62" selection-start-line="31" selection-start-column="62" selection-end-line="31" selection-end-column="62" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/events.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="354">
-          <caret line="46" column="1" lean-forward="true" selection-start-line="46" selection-start-column="1" selection-end-line="46" selection-end-column="1" />
+        <state relative-caret-position="240">
+          <caret line="45" column="2" lean-forward="true" selection-start-line="45" selection-start-column="2" selection-end-line="45" selection-end-column="2" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/apiControllers/app1Controller.js">
+    <entry file="file://$PROJECT_DIR$/apiControllers/requestController.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="214">
-          <caret line="20" column="24" selection-start-line="20" selection-start-column="24" selection-end-line="20" selection-end-column="24" />
+        <state relative-caret-position="220">
+          <caret line="35" column="24" lean-forward="true" selection-start-line="35" selection-start-column="24" selection-end-line="35" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repos/authRepo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="220">
+          <caret line="11" column="25" lean-forward="true" selection-start-line="11" selection-start-column="25" selection-end-line="11" selection-end-column="25" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/repos/requestRepo.js">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="140">
+          <caret line="7" column="96" selection-start-line="7" selection-start-column="96" selection-end-line="7" selection-end-column="96" />
         </state>
       </provider>
     </entry>

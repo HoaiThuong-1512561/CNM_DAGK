@@ -12,10 +12,10 @@ $("#btnSubmit").click(function() {
         note:note,
     })
         .then(function (response) {
-            alert("thanhf cong");
+            alert("thành công");
         })
         .catch(function (error) {
-            alert("looix");
+            alert("lỗi");
         });
 
     // $.ajax({
