@@ -9,8 +9,9 @@ function initMap()
             
 
             // Add marker
+            var marker
             function addMarker(props){
-                var marker = new google.maps.Marker({
+                marker = new google.maps.Marker({
                  position: props.coords,
                  map: map
                 });
@@ -75,12 +76,22 @@ function initMap()
                     var d = R *c*1.609344; //km
 
                     console.log("haversine distance is:",d);
+                    return d;
                 }
 
-                google.maps.event.addListener(map, 'click',function(event){
-                    addMarker({coords: event.latLng});
+                google.maps.event.addListener(map, 'click',function(event){                 
                     console.log(haversinFormula(event.latLng));
-                    //console.log(haversinFormula());
                     console.log("lat and lng of my: ",event.latLng.lat(), event.latLng.lng());
+                    var distance = haversinFormula(event.latLng);
+                    console.log(distance);
+                    if(distance<0.1)
+                    {
+                        alert("Distance is under 100m, cannot update location!");
+                        return;
+                    }
+                    else{
+                       
+                        marker.setPosition(event.latLng);
+                    }
                 })
         }
