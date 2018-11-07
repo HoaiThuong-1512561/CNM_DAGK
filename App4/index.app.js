@@ -53,7 +53,29 @@ function initMap()
                 Number.prototype.toRad = function() {
                 return this * Math.PI / 180;
                 }
-              
+                // Harvesin formula
+                function haversinFormula(point1)
+                {
+                    // Diem toa do cua tai xe
+                    var lon1 = point1.lng();
+                    var lat1= point1.lat();
+
+                    // 227 nguyen van cu, quan 5 (diem den)
+                    var lat2=  10.762418;
+                    var lon2=  106.681197;
+
+
+                    var dLon = (lon2- lon1).toRad();
+                    var dLat= (lat2-lat1).toRad();
+                    var R = 6371;
+                    var a = Math.sin(dLat/2) * Math.sin(dLat/2) + 
+                            Math.cos(lat1.toRad()) * Math.cos(lat2.toRad()) * 
+                            Math.sin(dLon/2) * Math.sin(dLon/2);  
+                    var c = 2 * Math.atan2(Math.sqrt(a), Math.sqrt(1-a)); 
+                    var d = R *c*1.609344; //km
+
+                    console.log("haversine distance is:",d);
+                }
 
                 google.maps.event.addListener(map, 'click',function(event){
                     addMarker({coords: event.latLng});
