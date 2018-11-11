@@ -1,3 +1,38 @@
+window.onload = function() {
+    vm.setupSSE();
+    //vm.initMap();
+    // loadCategories();
+};
+
+var vm= new Vue({
+    el:'#container',
+    data:{
+        userName:'',
+        password:'',
+        loginVisible: true,
+        requestsVisible:false,
+        mapVisible:false,
+        token:"",
+        refToken:"",
+        requests: []
+    },
+    method: {
+        login: function(){
+            var self=this;
+            axios.post("http://localhost:3000/app4/login",{
+                userName: self.userName,
+                password: self.password,
+            })
+            .then(function(response){
+                self.requestsVisible=true;
+                self.loginVisible=false;
+                self.token= response.data.access_token;
+                self.refToken = response.data.refresh_token;
+            })
+        }
+    }
+})
+
 function initMap()
         {
             var options = {              

@@ -11,6 +11,12 @@ exports.loadAllRequestApp1=()=>{
     console.log(sql)
     return db.load(sql);
 }
+
+exports.loadAllRequestApp2=()=>{
+    var sql = `select id_request,name,phone,address,note,status ,DATE_FORMAT(time, "%d/%m/%Y %H:%i:%s")AS time from request where status='${2}'`;
+    console.log(sql);
+    return db.load(sql);
+}
 exports.updateGeocoder=(id,lat,lng)=>{
     var sql = `update request set lat = '${lat}',
                                     lng = '${lng}',
