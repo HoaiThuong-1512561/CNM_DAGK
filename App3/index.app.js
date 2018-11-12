@@ -19,7 +19,8 @@ var vm = new Vue({
         idEdit:0,
         msg:"",
         err:"",
-
+        geocoderSrc:{lat: 10.7624229, lng: 106.6776543},
+        geocoderDes:{lat: 10.7624229, lng: 106.6790081},
         numDeltas : 100,
         delay : 10,
         i : 0,
@@ -30,7 +31,7 @@ var vm = new Vue({
         login: function() {
             var self = this;
             self.err="";
-            axios.post('http://localhost:3000/app2/login', {
+            axios.post('http://localhost:3000/app3/login', {
                 userName: self.userName,
                 password: self.password,
             })
@@ -51,7 +52,7 @@ var vm = new Vue({
         },
         getAllRequest:function(){
             var self = this;
-            axios.get('http://localhost:3000/api/request/getAllRequestApp1',{ headers: { token: self.token } })
+            axios.get('http://localhost:3000/api/request/getAll',{ headers: { token: self.token } })
                 .then(function (response) {
                     self.requests=response.data;
                     self.refDataTable();
@@ -130,7 +131,9 @@ var vm = new Vue({
                 $('#tableDH').DataTable().destroy();
                 resolve();
             }).then(function () {
-                var table = $('#tableDH').DataTable();
+                var table = $('#tableDH').DataTable({
+                    "order": [[ 0, "desc" ]]
+                } );
                 $('#tableDH tbody').on( 'click', 'tr', function () {
                     if ( $(this).hasClass('selected') ) {
                         $(this).removeClass('selected');
@@ -143,53 +146,61 @@ var vm = new Vue({
             })
         },
         initMap:function() {
+
             var self=this;
             var geocoder = new google.maps.Geocoder();
             geocoder.geocode( { 'address': self.address}, function(results, status) {
 
                 if (status == google.maps.GeocoderStatus.OK) {
-                    self.geocoder.lat = results[0].geometry.location.lat();
-                    self.geocoder.lng = results[0].geometry.location.lng();
                     var myOptions={
                         zoom:16,
-                        center: self.geocoder,
+                        center: self.geocoderSrc,
                         mapTypeId:google.maps.MapTypeId.ROADMAP
                     }
                     var map = new google.maps.Map(document.getElementById('map'),myOptions);
-                    marker = new google.maps.Marker({
-                        position: self.geocoder,
-                        map: map,
-                        title: "Latitude:"+geocoder.lat+" | Longitude:"+geocoder.lng
-                    });
-                    google.maps.event.addListener(map, 'click', function(event) {
-                        var result = [event.latLng.lat(), event.latLng.lng()];
-                        self.transition(result);
+                    directionsService = new google.maps.DirectionsService();    // Khởi tạo DirectionsService - thằng này có nhiệm vụ tính toán chỉ đường cho chúng ta.
+                    directionsDisplay = new google.maps.DirectionsRenderer({map: map});    // Khởi tạo DirectionsRenderer - thằng này có nhiệm vụ hiển thị chỉ đường trên bản đồ sau khi đã tính toán.
+
+                    directionsService.route({    // hàm route của DirectionsService sẽ thực hiện tính toán với các tham số truyền vào
+                        origin: self.geocoderSrc,
+                        destination: self.geocoderDes,    // điểm đích
+                        travelMode: "DRIVING"   // phương tiện di chuyển
+                    }, function(response, status) {    // response trả về bao gồm tất cả các thông tin về chỉ đường
+                        if (status === google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setDirections(response); // hiển thị chỉ đường trên bản đồ (nét màu đỏ từ A-B)
+                        } else {
+                            window.alert('Request for getting direction is failed due to ' + status);    // Hiển thị lỗi
+                        }
                     });
                 }else {
-                    alert("Không tìm thấy địa chỉ");
+                    //alert("Không tìm thấy địa chỉ");
                     var myOptions={
                         zoom:16,
-                        center: self.geocoder,
+                        center: self.geocoderSrc,
                         mapTypeId:google.maps.MapTypeId.ROADMAP
                     }
                     var map = new google.maps.Map(document.getElementById('map'),myOptions);
-                    marker = new google.maps.Marker({
-                        position: self.geocoder,
-                        map: map,
-                        title: "Latitude:"+geocoder.lat+" | Longitude:"+geocoder.lng
-                    });
-                    google.maps.event.addListener(map, 'click', function(event) {
-                        var result = [event.latLng.lat(), event.latLng.lng()];
-                        self.transition(result);
+                    directionsService = new google.maps.DirectionsService();    // Khởi tạo DirectionsService - thằng này có nhiệm vụ tính toán chỉ đường cho chúng ta.
+                    directionsDisplay = new google.maps.DirectionsRenderer({map: map});    // Khởi tạo DirectionsRenderer - thằng này có nhiệm vụ hiển thị chỉ đường trên bản đồ sau khi đã tính toán.
+
+                    directionsService.route({    // hàm route của DirectionsService sẽ thực hiện tính toán với các tham số truyền vào
+                        origin: self.geocoderSrc,
+                        destination: self.geocoderDes,    // điểm đích
+                        travelMode: "DRIVING"   // phương tiện di chuyển
+                    }, function(response, status) {    // response trả về bao gồm tất cả các thông tin về chỉ đường
+                        if (status === google.maps.DirectionsStatus.OK) {
+                            directionsDisplay.setDirections(response); // hiển thị chỉ đường trên bản đồ (nét màu đỏ từ A-B)
+                        } else {
+                            window.alert('Request for getting direction is failed due to ' + status);    // Hiển thị lỗi
+                        }
                     });
                 }
             });
+
+
         },
         editGeocoder:function () {
-            // $('#tableDH').DataTable().row().select();
-            if ($('#tableDH').DataTable().row('.selected').data()===undefined){
-                return
-            }else {
+            if ($('#tableDH').DataTable().row('.selected').data()[6]==="Đã có xe nhận"){
                 var self=this;
                 self.idEdit=parseInt($('#tableDH').DataTable().row('.selected').data()[0]);
                 self.mapVisible=true;
@@ -199,14 +210,17 @@ var vm = new Vue({
                     var i;
                     for (i=0;i<self.requests.length;i++){
                         if (self.requests[i].id_request===parseInt($('#tableDH').DataTable().row('.selected').data()[0])){
+                            self.geocoderDes.lat=self.requests[i].lat;
+                            self.geocoderDes.lng=self.requests[i].lng;
                             self.address=self.requests[i].address;
-
                             resolve();
                         }
                     }
                 }).then(function () {
                     self.initMap();
                 })
+            }else {
+                console.log($('#tableDH').DataTable().row('.selected').data()[6]);
             }
         },
         transition:function (result) {

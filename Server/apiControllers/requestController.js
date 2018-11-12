@@ -31,6 +31,7 @@ router.get('/getAllRequestApp1',(req,res)=>{
 });
 router.post('/updateGeocoderRequest',(req,res)=>{
 
+    console.log(req.body);
     requestRepo.updateGeocoder(req.body.id,req.body.lat,req.body.lng).then(rows=>{
         res.statusCode = 200;
         res.end('Done');
