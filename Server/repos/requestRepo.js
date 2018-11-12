@@ -1,7 +1,7 @@
 var db = require('../fn/mysql-db');
 
 exports.loadAll = () => {
-    var sql = 'select * from request';
+    var sql = 'select * from request order by time desc';
     return db.load(sql);
 };
 exports.loadAllRequestApp1=()=>{

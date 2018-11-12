@@ -2,18 +2,10 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74f6586e-2e8d-4aa4-ad45-0d456b6e3ac1" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/../App1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../App1/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../App1/index.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../App1/index.app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../App1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../App1/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/apiControllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/apiControllers/requestController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/repos/authRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/repos/authRepo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/repos/requestRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/repos/requestRepo.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../keyMap.txt" beforeDir="false" afterPath="$PROJECT_DIR$/../keyMap.txt" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -65,22 +57,25 @@
     <session id="-766246496">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="2" />
+          <entry key="project.closed" value="5" />
           <entry key="project.open.time.1" value="1" />
+          <entry key="project.open.time.14" value="1" />
+          <entry key="project.open.time.18" value="1" />
+          <entry key="project.open.time.19" value="1" />
           <entry key="project.open.time.22" value="1" />
-          <entry key="project.opened" value="2" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="html" value="279" />
-          <entry key="js" value="1280" />
+          <entry key="js" value="1332" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
           <entry key="HTML" value="279" />
-          <entry key="JavaScript" value="1280" />
+          <entry key="JavaScript" value="1332" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -97,31 +92,20 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="209">
-              <caret line="65" column="52" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="52" />
-              <folding>
-                <element signature="e#464#1020#0" />
-                <element signature="e#554#651#0" />
-                <element signature="e#3723#4811#0" />
-                <element signature="e#4549#5532#0" />
-              </folding>
+            <state relative-caret-position="140">
+              <caret line="163" column="23" selection-start-line="163" selection-start-column="23" selection-end-line="163" selection-end-column="23" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="60">
-              <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-              <folding>
-                <element signature="n#style#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
+            <state relative-caret-position="3600">
+              <caret line="180" column="104" selection-start-line="180" selection-start-column="104" selection-end-line="180" selection-end-column="104" />
             </state>
           </provider>
         </entry>
@@ -139,8 +123,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/index.app.js" />
         <option value="$PROJECT_DIR$/index.html" />
+        <option value="$PROJECT_DIR$/index.app.js" />
       </list>
     </option>
   </component>
@@ -151,7 +135,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="-1432" />
+    <option name="x" value="54" />
     <option name="y" value="-8" />
     <option name="width" value="1554" />
     <option name="height" value="916" />
@@ -164,6 +148,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -180,12 +165,11 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/../Server" />
+    <property name="last_opened_file_path" value="C:/React/src/food_delivery" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -221,15 +205,17 @@
       <workItem from="1541081394223" duration="1203000" />
       <workItem from="1541127397649" duration="5962000" />
       <workItem from="1541146650941" duration="12438000" />
+      <workItem from="1541341319021" duration="439000" />
+      <workItem from="1541341947052" duration="634000" />
+      <workItem from="1541647867958" duration="26000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="37034000" />
+    <option name="totallyTimeSpent" value="38133000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-1546" y="-8" width="1554" height="916" extended-state="6" />
-    <editor active="true" />
+    <frame x="54" y="-8" width="1554" height="916" extended-state="6" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -322,26 +308,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/index.app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="209">
-          <caret line="65" column="52" selection-start-line="65" selection-start-column="37" selection-end-line="65" selection-end-column="52" />
-          <folding>
-            <element signature="e#464#1020#0" />
-            <element signature="e#554#651#0" />
-            <element signature="e#3723#4811#0" />
-            <element signature="e#4549#5532#0" />
-          </folding>
+        <state relative-caret-position="140">
+          <caret line="163" column="23" selection-start-line="163" selection-start-column="23" selection-end-line="163" selection-end-column="23" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="60">
-          <caret line="3" column="25" selection-start-line="3" selection-start-column="25" selection-end-line="3" selection-end-column="25" />
-          <folding>
-            <element signature="n#style#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#2;n#div#2;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-          </folding>
+        <state relative-caret-position="3600">
+          <caret line="180" column="104" selection-start-line="180" selection-start-column="104" selection-end-line="180" selection-end-column="104" />
         </state>
       </provider>
     </entry>

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 	<head>
-		<title>APP #2: LOCATION IDENTIFIER</title>
+		<title>APP #3: LOCATION IDENTIFIER</title>
 		<meta charset="utf-8">
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 		<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
@@ -12,51 +12,51 @@
             height: 600px;
             background-color: grey;
         }
-		body, html {
-			height: 100%;
-			font-family: Arial, Helvetica, sans-serif;
-		}		
-		* {
-			box-sizing: border-box;
-		}		
-		.bg-img {
-			background-image: url("../Image/bg1.jpg");
-			background-color: #4CAF50;
-			height: 100%;
-			width: 100%;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-			position: relative;
-		}
-		.container {
-			position: absolute;
-			left: 575px;
-			margin-top:200px;
-			max-width: 450px;
-			padding: 50px;
-			background-color: white;
-			border-radius: 10px;
-		}						
-		input[type=text], input[type=password] {
-			width: 100%;
-			padding: 15px;
-			margin: 5px 0 22px 0;
-			border: none;
-			background: #f1f1f1;
-		}						
-		.btn {
-			background-color:red;
-			color: rgb(255, 255, 255);
-			padding: 16px 20px;
-			border: none;
-			cursor: pointer;
-			width: 100%;
-			opacity: 0.9;
-		}			
-		.btn:hover {
-			opacity: 1;
-		}
+		/*body, html {*/
+			/*height: 100%;*/
+			/*font-family: Arial, Helvetica, sans-serif;*/
+		/*}		*/
+		/** {*/
+			/*box-sizing: border-box;*/
+		/*}		*/
+		/*.bg-img {*/
+			/*background-image: url("../Image/bg1.jpg");*/
+			/*background-color: #4CAF50;*/
+			/*height: 100%;*/
+			/*width: 100%;*/
+			/*background-position: center;*/
+			/*background-repeat: no-repeat;*/
+			/*background-size: cover;*/
+			/*position: relative;*/
+		/*}*/
+		/*.container {*/
+			/*position: absolute;*/
+			/*left: 575px;*/
+			/*margin-top:200px;*/
+			/*max-width: 450px;*/
+			/*padding: 50px;*/
+			/*background-color: white;*/
+			/*border-radius: 10px;*/
+		/*}						*/
+		/*input[type=text], input[type=password] {*/
+			/*width: 100%;*/
+			/*padding: 15px;*/
+			/*margin: 5px 0 22px 0;*/
+			/*border: none;*/
+			/*background: #f1f1f1;*/
+		/*}						*/
+		/*.btn {*/
+			/*background-color:red;*/
+			/*color: rgb(255, 255, 255);*/
+			/*padding: 16px 20px;*/
+			/*border: none;*/
+			/*cursor: pointer;*/
+			/*width: 100%;*/
+			/*opacity: 0.9;*/
+		/*}			*/
+		/*.btn:hover {*/
+			/*opacity: 1;*/
+		/*}*/
 	</style>
 	<body>
 	<div class="bg-img">
@@ -105,7 +105,12 @@
 										<td>{{c.address}}</td>
 										<td>{{c.note}} </td>
 										<td>{{c.time}} </td>
-										<td style="color: red">Chưa xác nhận vị trí</td>
+										<td style="color: red" v-if="c.status === 1">Chưa xác nhận vị trí</td>
+										<td style="color: blue" v-if="c.status === 2">Đã xác nhận vị trí</td>
+										<td style="color: brown" v-if="c.status === 3">Đã có xe nhận</td>
+										<td style="color: black" v-if="c.status === 4">Đang di chuyển </td>
+										<td style="color: green" v-if="c.status === 5">Đã hoàn thành</td>
+
 									</tr>
 									</tbody>
 								</table>
@@ -117,11 +122,10 @@
 				</div>
 			</div>
             <div id="Gmap" v-if="mapVisible">
-				<div>Địa chỉ: {{address}}</div>
+				<div>Địa chỉ đón khách: {{address}}</div>
 				<div style="color: green">{{msg}}</div>
 				<div style="color: red">{{err}}</div>
                 <div id="map"></div>
-				<button class="btn btn-success" type="button" @click="updateGeocoder">Cập nhật vị trí</button>
 				<button class="btn btn-success" type="button" @click="closeMap">Đóng</button>
             </div>
 		</div>

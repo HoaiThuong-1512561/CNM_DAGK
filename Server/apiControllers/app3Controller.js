@@ -11,7 +11,7 @@ router.post('/regist',(req,res)=>{
     var entity={
         username:req.body.userName,
         password:req.body.password,
-        permission:2
+        permission:3
     };
 
     userRepo.checkUserName(entity.username).then(rows=>{
@@ -41,7 +41,7 @@ router.post('/login', (req, res) => {
     userRepo.login(entity)
         .then(rows => {
             if (rows.length > 0 ) {
-                if (rows[0].permission!==2){
+                if (rows[0].permission!==3){
                     res.statusCode = 403;
                     res.end('Không có quyền truy cập');
                 }else{

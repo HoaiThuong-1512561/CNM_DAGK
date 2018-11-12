@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th10 02, 2018 lúc 01:39 PM
+-- Thời gian đã tạo: Th10 12, 2018 lúc 02:39 PM
 -- Phiên bản máy phục vụ: 10.1.36-MariaDB
 -- Phiên bản PHP: 7.2.11
 
@@ -45,16 +45,18 @@ CREATE TABLE `request` (
 --
 
 INSERT INTO `request` (`id_request`, `name`, `phone`, `address`, `note`, `time`, `status`, `lat`, `lng`) VALUES
-(2, 'Nguyễn Hữu Thân', '0357409117', '18/13 Trần văn Thành', 'Không có gì', '2018-10-24 20:14:05', 2, 10.748754099692444, 106.67897611004639),
-(18, 'hữu Thân', '0357409117', '227 Nguyễn Văn Cừ', 'Xe 4 chỗ', '2018-11-02 11:05:36', 2, 10.7624176, 106.68119679999995),
-(19, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 16:45:42', 2, 10.753161510981329, 106.68040647846928),
+(2, 'Nguyễn Hữu Thân', '0357409117', '18/13 Trần văn Thành', 'Không có gì', '2018-10-24 20:14:05', 2, 10.7515304, 106.68184910000002),
+(18, 'hữu Thân', '0357409117', '227 Nguyễn Văn Cừ', 'Xe 4 chỗ', '2018-11-02 11:05:36', 3, 10.775812287329797, 106.69333525820305),
+(19, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 16:45:42', 2, 10.7515304, 106.68184910000002),
 (20, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 16:47:00', 2, 10.756210677931046, 106.68478665668357),
-(21, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 16:49:18', 1, 10.753118927602344, 106.68089410406819),
+(21, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 16:49:18', 2, 10.7515304, 106.68184910000002),
 (22, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 16:51:29', 2, 10.751117617820851, 106.67476347499837),
 (23, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 16:51:32', 2, 10.750862, 106.679843),
-(24, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 18:48:49', 1, 10.750862, 106.679843),
+(24, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 18:48:49', 2, 10.750269448155084, 106.6812141917904),
 (25, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 18:50:20', 2, 10.753715094366845, 106.68053651196318),
-(26, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 19:28:51', 1, NULL, NULL);
+(26, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-02 19:28:51', 3, 10.750862, 106.679843),
+(27, 'Hữu Thân', '0357409117', '18/13 Trần Văn Thành', 'test', '2018-11-03 10:07:55', 1, NULL, NULL),
+(28, 'Hữu Thân', '0357409117', 'Hà nội', 'test', '2018-11-04 21:34:01', 3, 21.0277644, 105.83415979999995);
 
 -- --------------------------------------------------------
 
@@ -73,8 +75,8 @@ CREATE TABLE `userrefreshtokenext` (
 --
 
 INSERT INTO `userrefreshtokenext` (`ID`, `token`, `time`) VALUES
-(1, 'npJRykiSCDvJMFEE7PHeRmUc772QiTXxaxHfIqx4da631nAXyDcN35Hhq9TefdeDvJXvgFQDtAq8m4WD', '2018-11-02 19:32:58'),
-(2, 'WtE7OEyjMaRE3O4GpkwXFECSS4sN0xKnUy6zPmCeUvkTr5PKwwAPanN51gR7foXfkBuyWdH2mEg4pmQW', '2018-11-02 18:47:27');
+(1, 'wNaRyAFO6qYIo63bhny6nQOQcX1w7G2KxQCaOlQZhXwwRa0y2C5qIsK7IZV6O0IdDfQlFZUajGMTDcmo', '2018-11-12 20:36:59'),
+(2, 'NYrjFicwgSsDR9IJ5356afprmPHEimOAqsfejgRvzheBwVM4x9AInDBgliJ46mLtnC8VH4icttdCfUbE', '2018-11-12 20:38:14');
 
 -- --------------------------------------------------------
 
@@ -95,7 +97,7 @@ CREATE TABLE `users` (
 
 INSERT INTO `users` (`ID`, `username`, `password`, `permission`) VALUES
 (1, 'huuthan', 'd55a408d6785037f17efee9ed6be998d', 2),
-(2, 'huuthan2', 'd55a408d6785037f17efee9ed6be998d', 2);
+(2, 'huuthan2', 'd55a408d6785037f17efee9ed6be998d', 3);
 
 --
 -- Chỉ mục cho các bảng đã đổ
@@ -127,7 +129,7 @@ ALTER TABLE `users`
 -- AUTO_INCREMENT cho bảng `request`
 --
 ALTER TABLE `request`
-  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=27;
+  MODIFY `id_request` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=29;
 
 --
 -- AUTO_INCREMENT cho bảng `users`
