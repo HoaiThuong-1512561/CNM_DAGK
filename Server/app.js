@@ -9,6 +9,7 @@ var requestCtrl = require('./apiControllers/requestController');
 var app1Ctrl = require('./apiControllers/app1Controller');
 var app2Ctrl = require('./apiControllers/app2Controller');
 var app3Ctrl = require('./apiControllers/app3Controller');
+var app4Ctrl = require('./apiControllers/app4Controller');
 var events = require('./events');
 var verifyAccessToken = require('./repos/authRepo').verifyAccessToken;
 
@@ -30,6 +31,7 @@ app.use('/api/request', verifyAccessToken, requestCtrl);
 app.use('/app1/', app1Ctrl);
 app.use('/app2/', app2Ctrl);
 app.use('/app3/', app3Ctrl);
+app.use('/app4/',app4Ctrl);
 app.get('/requestAddedEvent', events.subscribeRequestAdded);
 app.get('/requestRemoveEvent', events.subscribeRequestRemove);
 var port = process.env.PORT || 3000;

@@ -29,6 +29,18 @@ router.get('/getAllRequestApp1',(req,res)=>{
         res.end('View error log on console');
     })
 });
+
+router.get('/getAllRequestApp2',(req,res)=>{
+    
+    requestRepo.loadAllRequestApp2()
+        .then(rows => {
+            res.json(rows);
+        }).catch(err => {
+        console.log(err);
+        res.statusCode = 500;
+        res.end('View error log on console');
+    })
+});
 router.post('/updateGeocoderRequest',(req,res)=>{
 
     console.log(req.body);
@@ -36,6 +48,7 @@ router.post('/updateGeocoderRequest',(req,res)=>{
         res.statusCode = 200;
         res.end('Done');
         events.publishRequestRemove("done");
+
     }).catch(err=>{
         console.log(err);
         res.statusCode = 500;

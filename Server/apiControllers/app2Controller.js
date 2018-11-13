@@ -14,6 +14,8 @@ router.post('/regist',(req,res)=>{
         permission:2
     };
 
+    
+
     userRepo.checkUserName(entity.username).then(rows=>{
         if (rows.length===0){
             userRepo.add(entity).then(rows=>{
@@ -32,6 +34,8 @@ router.post('/regist',(req,res)=>{
 
 
 });
+
+
 
 router.post('/login', (req, res) => {
     var entity={
