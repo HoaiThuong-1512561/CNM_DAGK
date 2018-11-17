@@ -1,5 +1,5 @@
 var db = require('../fn/mysql-db');
-
+var userRepo= require("./userRepo");
 exports.loadAll = () => {
     var sql = 'select * from request order by time desc';
     return db.load(sql);
@@ -13,7 +13,13 @@ exports.loadAllRequestApp1=()=>{
 }
 
 exports.loadAllRequestApp2=()=>{
-    var sql = `select id_request,name,phone,address,note,status ,DATE_FORMAT(time, "%d/%m/%Y %H:%i:%s")AS time from request where status='${2}'`;
+    var sql = `select id_request,name,phone,address,note,status ,DATE_FORMAT(time, "%d/%m/%Y %H:%i:%s")AS time,lat,lng from request where status='${2}'`;
+    console.log(sql);
+    return db.load(sql);
+}
+
+exports.loadUserInfo=(userName)=>{
+    var sql = `select * from users where username = '${"caothang3"}'`;
     console.log(sql);
     return db.load(sql);
 }
