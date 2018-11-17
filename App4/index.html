@@ -12,88 +12,127 @@
 	<style>
 
 		#map{
-					height: 100vh;
-					width: 80vw;
-					margin: 0px;
-					padding: 0px;
-				}
-				html, body {
-				height: 100%;
-				margin: 0;
-				padding: 0;
-			}
+			height: 100vh;
+			width: 80vw;
+			margin: 0px;
+			padding: 0px;
+		}
+		html, body {
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
 			
-			.ui-widget {
-				font-family: Verdana,Arial,sans-serif;
-				font-size: .8em;
-			}
-	
-			.ui-widget-content {
-				background: #F9F9F9;
-				border: 1px solid #90d93f;
-				color: #222222;
-				
-			}
-	
-			.ui-dialog {
-				left: 0;
-				outline: 0 none;
-				padding: 0 !important;
-				position: absolute;
-				top: 5px;
-			}
-	
-			#dialog {
-				padding: 16px !important;
-				margin: 0; 
-				
-			}
-	
-			.ui-dialog .ui-dialog-content {
-				background: none repeat scroll 0 0 transparent;
-				border: 0 none;
-				overflow: auto;
-				position: relative;
-				padding: 0 !important;
-				text-align: center;
-				height: 104px !important;
-			}
-	
-			.ui-widget-header {
-				background: #b0de78;
-				border: 0;
-				color: #fff;
-				font-weight: normal;
-				text-align: center;
-			}
-	
-			.ui-dialog .ui-dialog-titlebar {
-				padding: 0.1em .5em;
-				position: relative;
-				font-size: 1em;
-			}
-			.ui-dialog-titlebar button{
-				background-image: url(images/ui-icons_777777_256x240.png);
-			}
+		.ui-widget {
+			font-family: Verdana,Arial,sans-serif;
+			font-size: .8em;
+		}
+
+		.ui-widget-content {
+			background: #F9F9F9;
+			border: 1px solid #90d93f;
+			color: #222222;
 			
-			#cancel{
-				margin-left: 238px;
-				margin-top: 16px;
-				background-color: green;
-			}
-			#accept{
-				margin-left: 155px;
-				margin-bottom: 16px;
-				background-color: gray;
-			}
+		}
+
+		.ui-dialog {
+			left: 0;
+			outline: 0 none;
+			padding: 0 !important;
+			position: absolute;
+			top: 5px;
+		}
+
+		#dialog {
+			padding: 16px !important;
+			margin: 0; 
+			
+		}
+
+		.ui-dialog .ui-dialog-content {
+			background: none repeat scroll 0 0 transparent;
+			border: 0 none;
+			overflow: auto;
+			position: relative;
+			padding: 0 !important;
+			text-align: center;
+			height: 104px !important;
+		}
+
+		.ui-widget-header {
+			background: #b0de78;
+			border: 0;
+			color: #fff;
+			font-weight: normal;
+			text-align: center;
+		}
+
+		.ui-dialog .ui-dialog-titlebar {
+			padding: 0.1em .5em;
+			position: relative;
+			font-size: 1em;
+		}
+		.ui-dialog-titlebar button{
+			background-image: url(images/ui-icons_777777_256x240.png);
+		}
+		
+		#cancel{
+			margin-left: 238px;
+			margin-top: 16px;
+			background-color: green;
+		}
+		#accept{
+			margin-left: 155px;
+			margin-bottom: 16px;
+			background-color: gray;
+		}
+		.container{
+			position: absolute;
+			height: 100%;
+			width: 100%;
+			background-color: white;
+			border-radius: 10px;
+		}
+		.containerdesign {			
+			position: absolute;
+			left: 600px;
+			margin-top:200px;
+			max-width: 450px;
+			padding: 50px;
+			background-color: white;
+			border-radius: 10px;
+		}	
+		.bg-img {
+			background-image: url("../Image/bg2.jpg");
+			/* background-color: #4CAF50; */
+			height: 100%;
+			width: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: relative;
+		}
+		.btn {
+			background-color:red;
+			color: rgb(255, 255, 255);
+			padding: 16px 20px;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+			opacity: 0.9;
+		}			
+		.btn:hover {
+			opacity: 1;
+		}
+
 		</style>
 </head>
 
 
 <body>
 	<div class="bg-img">
-		<div class="containerdesign" id="container">
-			<div id="login" v-if="loginVisible">
+		<div  id="container">
+			<div class="containerdesign" id="login" v-if="loginVisible">
 				<h2 style="text-align:center">Đăng nhập tài khoản</h2>
 				<div class="form-group">
 					<label>Tên đăng nhập:</label>
@@ -106,7 +145,7 @@
 				<div style="color: red">{{err}}</div>
 				<button type="button" class="btn btn-success" @click="login">Đăng nhập</button>
 			</div>
-			<div v-if="requestsVisible">
+			<div class="container"v-if="requestsVisible">
 				<div class="container sp">
 					<div class="panel panel-default">
 						<div class="panel-heading">
