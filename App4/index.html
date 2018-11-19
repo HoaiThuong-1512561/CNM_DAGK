@@ -125,14 +125,34 @@
 			opacity: 1;
 		}
 
+			#cancel{
+				margin-left: 238px;
+				margin-top: 16px;
+				background-color: green;
+			}
+			#accept{
+				margin-left: 155px;
+				margin-bottom: 16px;
+				background-color: gray;
+			}
+
+			.endTrip{
+				float: right;				
+				background-color: green;
+				margin-left: 20px;
+				position: relative;
+				right: -54px;
+				top: -248px;
+				
+			}
 		</style>
 </head>
 
 
 <body>
 	<div class="bg-img">
-		<div  id="container">
-			<div class="containerdesign" id="login" v-if="loginVisible">
+		<div class="container" id="container">
+			<div id="login" v-if="loginVisible">
 				<h2 style="text-align:center">Đăng nhập tài khoản</h2>
 				<div class="form-group">
 					<label>Tên đăng nhập:</label>
@@ -145,43 +165,28 @@
 				<div style="color: red">{{err}}</div>
 				<button type="button" class="btn btn-success" @click="login">Đăng nhập</button>
 			</div>
-			<div class="container"v-if="requestsVisible">
-				<div class="container sp">
-					<div class="panel panel-default">
-						<div class="panel-heading">
-							<h3 class="panel-title">Quản lý thông tin đặt xe</h3>
-						</div>
-						<div class="panel-body">
-							<span> </span>
-							<div class="table-responsive">
-								<table class="table" id="tableDH">
-									<thead>
-										<tr>
-											<th><a>Tên tài xế</a></th>
-											<th><a>Số điện thoại</a></th>
-											<th><a>Địa chỉ nhận</a></th>
-											<th><a>Trạng Thái</a></th>
-										</tr>
-									</thead>
-									<tbody>
-										<tr>
-											<td>{{userName}} </td>
-											<td>{{SDT}}</td>
-											<td>{{address}} </td>
-											<td style="color: red">Chưa xác nhận vị trí</td>
-										</tr>
-									</tbody>
-								</table>
-
-							</div>
-						</div>
-					</div>
-					<button class="btn btn-success" type="button" @click="notifyRequestTimeout">Nhận yêu cầu</button>
-					<div id="dialog" title="Basic dialog">
-						<p></p>
-					</div>
+			<div v-if="requestsVisible">
+				<h1>Thông tin tài xế</h1>
+				<table class="table table-hover border">
+					<thead>
+					  <tr>
+						<th>Tên tài xế</th>
+						<th>Số điện thoại</th>
+						<th>Trạng thái</th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr>
+						<td>{{userName}}</td>
+						<td>{{SDT}}</td>
+						<td>{{userStatus}}</td>
+					  </tr>
+					</tbody>
+				</table>
+				<button class="btn btn-success" type="button" @click="notifyRequestTimeout">Nhận yêu cầu</button>
+				<div id="dialog" title="Basic dialog">
+					<p></p>
 				</div>
-				
 			</div>
 			<div id="Gmap" v-if="mapVisible">
 				<div style="color: green">{{msg}}</div>

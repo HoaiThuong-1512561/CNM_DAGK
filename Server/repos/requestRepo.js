@@ -31,3 +31,10 @@ exports.updateGeocoder=(id,lat,lng)=>{
 
     return db.insert(sql);
 }
+
+exports.updateUserStatus = (id,status)=>{
+     var sql = `update users set Status = '${status}'
+                where ID = '${id}'`;
+                
+     return db.insert(sql);
+}

@@ -64,7 +64,9 @@ router.post('/login', (req, res) => {
                         res.end('View error log on console');
                     })
             } else {
+                res.statusCode = 404;
                 res.json({
+                    
                     auth: false
                 })
             }

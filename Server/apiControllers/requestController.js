@@ -67,4 +67,16 @@ router.post('/updateGeocoderRequest', (req, res) => {
     })
 });
 
+router.post('/updateUserStatus',(req,res)=>{
+    console.log(req.body);
+    requestRepo.updateUserStatus(req.body.ID, req.body.Status).then(row=>{
+        res.statusCode=200;
+
+    }).catch(err=>{
+        console.log(err);
+        res.statusCode=500;
+        res.end('View error log on console');
+    })
+});
+
 module.exports = router;

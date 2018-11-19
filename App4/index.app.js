@@ -17,6 +17,8 @@ var vm = new Vue({
         requests: [],
         token: "",
         refToken: "",
+        userId:0,
+        userStatus:"",
 
         address: "",
         idEdit: 0,
@@ -38,6 +40,9 @@ var vm = new Vue({
                 .then(function (response) {
                     self.requestsVisible = true;
                     self.loginVisible = false;
+                    self.userId = response.data.user.ID;
+                    self.userStatus = response.data.user.Status;
+                    console.log( response.data.user.Status);
                     self.token = response.data.access_token;
                     self.refToken = response.data.refresh_token;
                     console.log(self.userName);
@@ -98,6 +103,11 @@ var vm = new Vue({
             self=this;
             requestArr= self.requests;
             var index=0;
+            if(self.userStatus==="BUSY")
+            {
+                alert("Khong the nhan request o trang thai BUSY");
+                return;
+            }
             $(document).ready(function(){
                 $('#dialog').dialog({
                     height: 50,
@@ -117,12 +127,17 @@ var vm = new Vue({
                       
                         self.requestsVisible=false;
                         dialogVisible=false;
-                        self.mapVisible=true;
+                        setTimeout(() => {
+                            self.mapVisible=true;
+                        }, 2000);
+                       
+                      
+                        self.updateUserStatus();
                         clearInterval(startInterval);  
                         $("#dialog").dialog('close');   
-                        setTimeout(() => {
+                       setTimeout(() => {
                             self.initMap(requestArr[index]); 
-                            console.log("dia chi cua khach hang: ",self.requests[index].address);
+                           console.log("dia chi cua khach hang: ",self.requests[index].address);
                         }, 2000);
                            
                        
@@ -155,6 +170,32 @@ var vm = new Vue({
                 
            
                
+        },
+        updateUserStatus: function(){
+            self=this;
+            if(self.userStatus==="READY")
+                self.userStatus="BUSY";
+            else
+                 self.userStatus="READY";
+            axios.post('http://localhost:3000/api/request/updateUserStatus',{
+                ID: self.userId,
+                Status: self.userStatus
+            },{
+                  
+                    headers: {
+                        token: self.token
+                    }
+                    })
+                    .then(function (response) {
+                        console.log("da vao day");
+                        
+                    })
+                    .catch(function (error) {
+                        alert(error);
+                    }).then(function () {
+                        
+                    
+            })
         },
         refreshToken: function () {
             var self = this;
@@ -235,7 +276,7 @@ var vm = new Vue({
                 mapTypeId:google.maps.MapTypeId.ROADMAP
 
             }
-      
+            console.log(self.userStatus);
             var map = new google.maps.Map(document.getElementById("map"),options);
 
             // Add marker
@@ -363,6 +404,7 @@ var vm = new Vue({
        
         closeMap: function () {
             var self = this;
+            self.updateUserStatus();
             self.mapVisible = false;
             self.requestsVisible = true;
             self.getAllRequest();
