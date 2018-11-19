@@ -87,11 +87,7 @@
 			background-color: gray;
 		}
 		.container{
-			position: absolute;
-			height: 100%;
-			width: 100%;
-			background-color: white;
-			border-radius: 10px;
+		
 		}
 		.containerdesign {			
 			position: absolute;
@@ -103,23 +99,10 @@
 			border-radius: 10px;
 		}	
 		.bg-img {
-			background-image: url("../Image/bg2.jpg");
-			/* background-color: #4CAF50; */
-			height: 100%;
-			width: 100%;
-			background-position: center;
-			background-repeat: no-repeat;
-			background-size: cover;
-			position: relative;
+		
 		}
 		.btn {
-			background-color:red;
-			color: rgb(255, 255, 255);
-			padding: 16px 20px;
-			border: none;
-			cursor: pointer;
-			width: 100%;
-			opacity: 0.9;
+			
 		}			
 		.btn:hover {
 			opacity: 1;
@@ -192,6 +175,9 @@
 				<div style="color: green">{{msg}}</div>
 				<div style="color: red">{{err}}</div>
 				<div id="map" class="map"></div>
+			</div>
+			<div class="endTrip">
+				<button type="button" class="btn btn-success" @click="closeMap">Kết thúc</button>
 			</div>
 		</div>
 	</div>
