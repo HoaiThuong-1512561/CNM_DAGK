@@ -67,6 +67,19 @@ router.post('/updateGeocoderRequest', (req, res) => {
     })
 });
 
+router.post('/updateDriverLocationRequest', (req,res)=>{
+    console.log(req.body);
+    requestRepo.updateDriverLocation(req.body.ID, req.body.lat, req.body.lng).then(rows => {
+        res.statusCode = 200;
+        res.end('Done');
+    
+
+    }).catch(err => {
+        console.log(err);
+        res.statusCode = 500;
+        res.end('View error log on console');
+    })
+})
 router.post('/updateUserStatus',(req,res)=>{
 
     requestRepo.updateUserStatus(req.body.ID,req.body.Status).then(row=>{

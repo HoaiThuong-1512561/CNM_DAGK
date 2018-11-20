@@ -32,6 +32,13 @@ exports.updateGeocoder=(id,lat,lng)=>{
     return db.insert(sql);
 }
 
+exports.updateDriverLocation=(id,lat,lng)=>{
+   var sql =`update users set lat = '${lat}',
+                             lng='${lng}'
+                              where ID='${id}'`;
+
+   return db.insert(sql);
+}
 exports.updateUserStatus = (id,status)=>{
     console.log("---------------------sdsadsads---------------------------------");
      var sql = `update users set status = '${status}'

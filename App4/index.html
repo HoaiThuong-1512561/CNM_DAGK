@@ -120,13 +120,14 @@
 			}
 
 			.endTrip{
-				float: right;
-				background-color: green;
-				margin-left: 20px;
-				position: relative;
-				right: -54px;
-				top: -248px;
+			    position: relative;
+				left: 140px;
+				bottom: 22px;
+			}
 
+			.updateDriverLocation{
+				position: relative;
+   				 top: 11px;
 			}
 		</style>
 </head>
@@ -207,7 +208,10 @@
 				<div style="color: green">{{msg}}</div>
 				<div style="color: red">{{err}}</div>
 				<div id="map" class="map"></div>
-				<div class="endTrip">
+				<div class="updateDriverLocation" >
+					<button class="btn btn-success" type="button" @click="updateDriverLocation">Cập nhật vị trí</button>
+				</div>
+				<div class="endTrip" >
 					<button type="button" class="btn btn-success" @click="closeMap">Kết thúc</button>
 				</div>
 			</div>

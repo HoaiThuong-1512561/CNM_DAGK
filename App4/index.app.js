@@ -9,16 +9,18 @@ var vm = new Vue({
     data: {
         userName: '',
         password: '',
-        SDT: '',
+        SDT: '',  
         loginVisible: true,
         requestsVisible: false,
         mapVisible: false,
         dialogVisible: false,
+        //endTripVisible: false,
         request: {},
         token: "",
         refToken: "",
         userId:0,
         userStatus:"",
+        driverLocation : {lat: 10.762418,lng: 106.681197},
         address: "",
         idEdit: 0,
         msg: "",
@@ -38,13 +40,19 @@ var vm = new Vue({
                     password: self.password,
                 })
                 .then(function (response) {
-                    self.requestsVisible = true;
+                    self.requestsVisible = false;
                     self.loginVisible = false;
+                    //self.endTripVisible=false;
+                    self.mapVisible=true;                
                     self.userId = response.data.user.ID;
                     self.userStatus = response.data.user.Status;
                     self.token = response.data.access_token;
                     self.refToken = response.data.refresh_token;
-                    self.getUserInfo(self.userName);
+                    requestArr = self.request;
+                    setTimeout(() => {
+                        self.initMap(requestArr);
+                    }, 1000);
+                    //self.getUserInfo(self.userName);
 
                 })
                 .catch(function (error) {
@@ -85,71 +93,6 @@ var vm = new Vue({
 
 
 
-            // var index=0;
-            // if(self.userStatus==="BUSY")
-            // {
-            //     alert("Khong the nhan request o trang thai BUSY");
-            //     return;
-            // }
-            // $(document).ready(function(){
-            //     $('#dialog').dialog({
-            //         height: 50,
-            //         width: 350,
-            //         modal: true,
-            //         resizable: true,
-            //         dialogClass: 'no-close success-dialog',
-            //         buttons: {
-            //             "Từ chối": {
-            //             text: "Từ chối",
-            //             id:"cancel",
-            //         click:function() { $(this).dialog("close"); }},
-            //         "Chấp nhận":{
-            //         text:"Chấp nhận",
-            //         id:"accept" ,
-            //         click: function() {
-            //
-            //             self.requestsVisible=false;
-            //             dialogVisible=false;
-            //             setTimeout(() => {
-            //                 self.mapVisible=true;
-            //             }, 2000);
-            //
-            //
-            //             self.updateUserStatus();
-            //             clearInterval(startInterval);
-            //             $("#dialog").dialog('close');
-            //            setTimeout(() => {
-            //                 self.initMap(requestArr);
-            //                console.log("dia chi cua khach hang: ",self.requests.address);
-            //             }, 2000);
-            //
-            //
-            //         } }
-            //     }
-            //     });
-            //
-            // })
-            // var content=requestArr.name+ '</br>'+ requestArr.phone+'</br>'+requestArr.address;
-            // document.getElementById("dialog").innerHTML= content;
-            //
-            // // var startInterval = setInterval(function(){
-            // //     if(index< requestArr.length)
-            // //         {
-            // //             index++;
-            // //             $("#dialog").dialog();
-            // //             var content=requestArr[index].name+ '</br>'+ requestArr[index].phone+'</br>'+requestArr[index].address;
-            // //             document.getElementById("dialog").innerHTML= content;
-            // //             //alert(requestArr[index].name);
-            // //
-            // //         }
-            // //         else
-            // //         {
-            // //             $("#dialog").dialog();
-            // //             document.getElementById("dialog").innerHTML ="Khong co request nao!";
-            // //             clearInterval(startInterval);
-            // //             $("#dialog").dialog('close');
-            // //         }
-            // // }, 10000);
 
         },
         updateUserStatus: function(){
@@ -163,8 +106,8 @@ var vm = new Vue({
                 status="READY";
 
             axios.post('http://localhost:3000/api/request/updateUserStatus', {
-                id: self.userId,
-                status: status,
+                ID: self.userId,
+                Status: status,
             },{ headers: { token: self.token } })
                 .then(function (response) {
                     self.userStatus=status;
@@ -218,6 +161,34 @@ var vm = new Vue({
 
             });
         },
+        updateDriverLocation: function(){
+            var self=this;
+            axios.post('http://localhost:3000/api/request/updateDriverLocationRequest', {
+                ID: self.userId,
+                lat: self.driverLocation.lat,
+                lng: self.driverLocation.lng,
+            },{ headers: { token: self.token } })
+                .then(function (response) {
+                    self.msg="Cập nhật thành công";
+                })
+                .catch(function (error) {
+                    if (error.response.status===401){
+                        new Promise(function (resolve) {
+                            self.refreshToken();
+                            resolve();
+                        }).then(function () {
+                            if (self.mapVisible===true){
+                                self.updateDriverLocation();
+                            }
+                        })
+                        return;
+                    }else {
+                        self.err="Không thể cập nhật";
+                    }
+                }).then(function () {
+
+            });
+        },
         refreshToken: function () {
             var self = this;
             console.log("ref");
@@ -254,7 +225,7 @@ var vm = new Vue({
                     self.dialogVisible=true;
                 }
                 //self.notifyRequestTimeout();
-                //console.log(data);
+                console.log(data);
             }, false);
         },
         refDataTable: function () {
@@ -323,8 +294,8 @@ var vm = new Vue({
            {
             // Driver location
             coords: {
-                lat: 10.762418,
-                lng: 106.681197
+                lat: self.driverLocation.lat,
+                lng: self.driverLocation.lng
             }
         }
         ];
@@ -399,8 +370,8 @@ var vm = new Vue({
                 } else {
 
                     marker.setPosition(event.latLng);
-                    markers[1].coords.lat=event.latLng.lat();
-                    markers[1].coords.lng= event.latLng.lng();
+                    self.driverLocation.lat=event.latLng.lat();
+                    self.driverLocation.lng= event.latLng.lng();
                     calculateAndDisplayRoute(directionsService, directionsDisplay);
                     console.log("marker khi thay doi la: ", markers[1].coords);
                 }
@@ -412,6 +383,7 @@ var vm = new Vue({
             self.mapVisible = false;
             self.requestsVisible = true;
             self.dialogVisible=false;
+            self.getUserInfo();
             self.msg = "";
             self.err = "";
             self.request={},
