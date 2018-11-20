@@ -5,7 +5,6 @@ var userRepo = require('../repos/userRepo'),
     moment = require('moment');
 var authRepo = require('../repos/authRepo');
 
-
 router.post('/registerapp4',(req,res)=>{
     var entity={
         username:req.body.userName,
@@ -13,7 +12,7 @@ router.post('/registerapp4',(req,res)=>{
         permission:4
     };
 
-    
+
 
     userRepo.checkUserName(entity.username).then(rows=>{
         if (rows.length===0){
@@ -38,10 +37,10 @@ router.post('/login', (req, res) => {
         userName:req.body.userName,
         password: req.body.password,
     }
-    
+
     userRepo.login(entity)
         .then(rows => {
-            
+
             if (rows.length > 0) {
                 console.log(entity);
                 var userEntity = rows[0];
@@ -66,7 +65,7 @@ router.post('/login', (req, res) => {
             } else {
                 res.statusCode = 404;
                 res.json({
-                    
+
                     auth: false
                 })
             }

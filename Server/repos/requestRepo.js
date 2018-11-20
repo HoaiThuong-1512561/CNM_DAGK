@@ -8,19 +8,19 @@ exports.loadAllRequestApp1=()=>{
     var sql = `select id_request,name,phone,address,note,status ,DATE_FORMAT(time, "%d/%m/%Y %H:%i:%s")AS time from request where status='${1}'`;
     // SELECT *, DATE_FORMAT(date,'%d/%m/%Y') AS niceDate
     // FROM
-    console.log(sql)
+    //console.log(sql)
     return db.load(sql);
 }
 
 exports.loadAllRequestApp2=()=>{
     var sql = `select id_request,name,phone,address,note,status ,DATE_FORMAT(time, "%d/%m/%Y %H:%i:%s")AS time,lat,lng from request where status='${2}'`;
-    console.log(sql);
+    //onsole.log(sql);
     return db.load(sql);
 }
 
 exports.loadUserInfo=(userName)=>{
     var sql = `select * from users where username = '${"caothang3"}'`;
-    console.log(sql);
+    //console.log(sql);
     return db.load(sql);
 }
 exports.updateGeocoder=(id,lat,lng)=>{
@@ -33,8 +33,21 @@ exports.updateGeocoder=(id,lat,lng)=>{
 }
 
 exports.updateUserStatus = (id,status)=>{
-     var sql = `update users set Status = '${status}'
-                where ID = '${id}'`;
-                
+    console.log("---------------------sdsadsads---------------------------------");
+     var sql = `update users set status = '${status}'
+                where id = '${id}'`;
+
+     console.log(sql);
      return db.insert(sql);
+}
+exports.updateRequestStatus = (id,status)=>{
+    if (status===3){
+        var sql = `update request set status = '${status}'
+                where id_request = '${id}' and status='2'`;
+    }
+    if (status===4){
+        var sql = `update request set status = '${status}'
+                where id_request = '${id}' and status='3'`;
+    }
+    return db.insert(sql);
 }

@@ -68,9 +68,26 @@ router.post('/updateGeocoderRequest', (req, res) => {
 });
 
 router.post('/updateUserStatus',(req,res)=>{
-    console.log(req.body);
-    requestRepo.updateUserStatus(req.body.ID, req.body.Status).then(row=>{
+
+    requestRepo.updateUserStatus(req.body.ID,req.body.Status).then(row=>{
         res.statusCode=200;
+        res.end('Done');
+    }).catch(err=>{
+        console.log(err);
+        res.statusCode=500;
+        res.end('View error log on console');
+    })
+});
+router.post('/updateRequestStatus',(req,res)=>{
+    console.log(req.body.id+req.body.status);
+    requestRepo.updateRequestStatus(req.body.id, req.body.status).then(row=>{
+        if (row.affectedRows>0){
+            res.statusCode=200;
+            res.end('Done');
+        }else {
+            res.statusCode=406;
+            res.end('false');
+        }
 
     }).catch(err=>{
         console.log(err);

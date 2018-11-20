@@ -25,6 +25,11 @@ exports.getUserInfo=userId=>{
     return db.load(sql);
 }
 
+exports.getUserStatus=userName=>{
+    var sql = `select * from users where username = '${userName}'`;
+    return db.load(sql);
+}
+
 
 
 

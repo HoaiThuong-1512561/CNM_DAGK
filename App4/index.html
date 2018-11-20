@@ -22,7 +22,7 @@
 			margin: 0;
 			padding: 0;
 		}
-			
+
 		.ui-widget {
 			font-family: Verdana,Arial,sans-serif;
 			font-size: .8em;
@@ -32,7 +32,7 @@
 			background: #F9F9F9;
 			border: 1px solid #90d93f;
 			color: #222222;
-			
+
 		}
 
 		.ui-dialog {
@@ -45,8 +45,8 @@
 
 		#dialog {
 			padding: 16px !important;
-			margin: 0; 
-			
+			margin: 0;
+
 		}
 
 		.ui-dialog .ui-dialog-content {
@@ -75,7 +75,7 @@
 		.ui-dialog-titlebar button{
 			background-image: url(images/ui-icons_777777_256x240.png);
 		}
-		
+
 		#cancel{
 			margin-left: 238px;
 			margin-top: 16px;
@@ -87,9 +87,9 @@
 			background-color: gray;
 		}
 		.container{
-		
+
 		}
-		.containerdesign {			
+		.containerdesign {
 			position: absolute;
 			left: 600px;
 			margin-top:200px;
@@ -97,13 +97,13 @@
 			padding: 50px;
 			background-color: white;
 			border-radius: 10px;
-		}	
+		}
 		.bg-img {
-		
+
 		}
 		.btn {
-			
-		}			
+
+		}
 		.btn:hover {
 			opacity: 1;
 		}
@@ -120,13 +120,13 @@
 			}
 
 			.endTrip{
-				float: right;				
+				float: right;
 				background-color: green;
 				margin-left: 20px;
 				position: relative;
 				right: -54px;
 				top: -248px;
-				
+
 			}
 		</style>
 </head>
@@ -149,36 +149,70 @@
 				<button type="button" class="btn btn-success" @click="login">Đăng nhập</button>
 			</div>
 			<div v-if="requestsVisible">
+				<div style="color: green">{{msg}}</div>
 				<h1>Thông tin tài xế</h1>
 				<table class="table table-hover border">
 					<thead>
 					  <tr>
 						<th>Tên tài xế</th>
 						<th>Số điện thoại</th>
-						<th>Trạng thái</th>
+						  <th>Trạng thái</th>
+						  <th>Đổi trạng thái</th>
 					  </tr>
 					</thead>
 					<tbody>
 					  <tr>
 						<td>{{userName}}</td>
 						<td>{{SDT}}</td>
-						<td>{{userStatus}}</td>
+						  <td>{{userStatus}}</td>
+						  <td>
+							  <button class="btn btn-success" type="button" @click="updateUserStatus">Đổi</button>
+						  </td>
+
 					  </tr>
 					</tbody>
 				</table>
-				<button class="btn btn-success" type="button" @click="notifyRequestTimeout">Nhận yêu cầu</button>
+				<!--<button class="btn btn-success" type="button" @click="notifyRequestTimeout">Nhận yêu cầu</button>-->
 				<div id="dialog" title="Basic dialog">
 					<p></p>
 				</div>
+			</div>
+
+			<div v-if="dialogVisible">
+				<div style="color: red">{{err}}</div>
+				<h1>Thông tin đặt xe</h1>
+				<table class="table table-hover border">
+					<thead>
+					<tr>
+						<th>ID</th>
+						<th>Tên</th>
+						<th>Số điện thoại</th>
+						<th>Địa chỉ</th>
+						<th>Ghi chú</th>
+					</tr>
+					</thead>
+					<tbody>
+					<tr>
+						<td>{{request.id_request}}</td>
+						<td>{{request.name}}</td>
+						<td>{{request.phone}}</td>
+						<td>{{request.address}}</td>
+						<td>{{request.note}}</td>
+					</tr>
+					</tbody>
+				</table>
+				<button class="btn btn-success" type="button" @click="notifyRequestTimeout">Nhận yêu cầu</button>
 			</div>
 			<div id="Gmap" v-if="mapVisible">
 				<div style="color: green">{{msg}}</div>
 				<div style="color: red">{{err}}</div>
 				<div id="map" class="map"></div>
+				<div class="endTrip">
+					<button type="button" class="btn btn-success" @click="closeMap">Kết thúc</button>
+				</div>
 			</div>
-			<div class="endTrip">
-				<button type="button" class="btn btn-success" @click="closeMap">Kết thúc</button>
-			</div>
+
+
 		</div>
 	</div>
 
@@ -199,14 +233,12 @@
 	<script src="index.app.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 
-	<script>
-		$(document).ready(function () {
-			$("#tableDH").DataTable();
-		});
+
+
+	<script async defer
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4qFj8fv3AYqhSvBiSvCkPWB89NhfSOvY&callback=initMap">
 	</script>
 
-	<script async defer src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4qFj8fv3AYqhSvBiSvCkPWB89NhfSOvY&callback=initMap">
-	</script>
 
 </body>
 

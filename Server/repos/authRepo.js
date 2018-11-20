@@ -5,7 +5,7 @@ var userRepo=require('./userRepo');
 var db = require('../fn/mysql-db');
 
 const SECRET = 'HUUTHAN';
-const AC_LIFETIME = 600; // seconds
+const AC_LIFETIME = 6; // seconds
 
 exports.generateAccessToken = userEntity => {
     var payload = {

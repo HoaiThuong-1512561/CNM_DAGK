@@ -1,6 +1,6 @@
 
 window.onload = function () {
-    vm.setupSSE();
+    //vm.setupSSE();
     //vm.initMap();
     // loadCategories();
 };
@@ -14,17 +14,17 @@ var vm = new Vue({
         requestsVisible: false,
         mapVisible: false,
         dialogVisible: false,
-        requests: [],
+        request: {},
         token: "",
         refToken: "",
         userId:0,
         userStatus:"",
-
         address: "",
         idEdit: 0,
         msg: "",
         err: "",
 
+        request2:{},
         numDeltas: 100,
         delay: 10,
         i: 0,
@@ -42,160 +42,181 @@ var vm = new Vue({
                     self.loginVisible = false;
                     self.userId = response.data.user.ID;
                     self.userStatus = response.data.user.Status;
-                    console.log( response.data.user.Status);
                     self.token = response.data.access_token;
                     self.refToken = response.data.refresh_token;
-                    console.log(self.userName);
                     self.getUserInfo(self.userName);
+
                 })
                 .catch(function (error) {
                     alert(error);
-                }).then(function () {
-                    self.getAllRequest();
                 })
         },
         getUserInfo: function(userName){
             var self = this;
             axios.get('http://localhost:3000/api/request/getUserInfo', {
-                  
+
                 headers: {
                     token: self.token
                 }
                 })
                 .then(function (response) {
                     self.SDT= response.data[0].SDT;
-                    console.log("da vao day");
-                    
+                    self.setupSSE();
                 })
                 .catch(function (error) {
                     alert(error);
                 }).then(function () {
-                    
+
                 })
         },
-        getAllRequest: function () {
-            var self = this;
-            axios.get('http://localhost:3000/api/request/getAllRequestApp2', {
-                    headers: {
-                        token: self.token
-                    }
-                })
+        notifyRequestTimeout: function(){
+            self=this;
+            requestArr= self.request;
+            self.request2=self.request;
+            self.updateRequestStatus(3);
+            if (self.err===''){
+                self.mapVisible=true;
+                self.requestsVisible=false;
+                self.dialogVisible=false;
+                setTimeout(() => {
+                    self.initMap(requestArr);
+                }, 1000);
+            }
+
+
+
+            // var index=0;
+            // if(self.userStatus==="BUSY")
+            // {
+            //     alert("Khong the nhan request o trang thai BUSY");
+            //     return;
+            // }
+            // $(document).ready(function(){
+            //     $('#dialog').dialog({
+            //         height: 50,
+            //         width: 350,
+            //         modal: true,
+            //         resizable: true,
+            //         dialogClass: 'no-close success-dialog',
+            //         buttons: {
+            //             "Từ chối": {
+            //             text: "Từ chối",
+            //             id:"cancel",
+            //         click:function() { $(this).dialog("close"); }},
+            //         "Chấp nhận":{
+            //         text:"Chấp nhận",
+            //         id:"accept" ,
+            //         click: function() {
+            //
+            //             self.requestsVisible=false;
+            //             dialogVisible=false;
+            //             setTimeout(() => {
+            //                 self.mapVisible=true;
+            //             }, 2000);
+            //
+            //
+            //             self.updateUserStatus();
+            //             clearInterval(startInterval);
+            //             $("#dialog").dialog('close');
+            //            setTimeout(() => {
+            //                 self.initMap(requestArr);
+            //                console.log("dia chi cua khach hang: ",self.requests.address);
+            //             }, 2000);
+            //
+            //
+            //         } }
+            //     }
+            //     });
+            //
+            // })
+            // var content=requestArr.name+ '</br>'+ requestArr.phone+'</br>'+requestArr.address;
+            // document.getElementById("dialog").innerHTML= content;
+            //
+            // // var startInterval = setInterval(function(){
+            // //     if(index< requestArr.length)
+            // //         {
+            // //             index++;
+            // //             $("#dialog").dialog();
+            // //             var content=requestArr[index].name+ '</br>'+ requestArr[index].phone+'</br>'+requestArr[index].address;
+            // //             document.getElementById("dialog").innerHTML= content;
+            // //             //alert(requestArr[index].name);
+            // //
+            // //         }
+            // //         else
+            // //         {
+            // //             $("#dialog").dialog();
+            // //             document.getElementById("dialog").innerHTML ="Khong co request nao!";
+            // //             clearInterval(startInterval);
+            // //             $("#dialog").dialog('close');
+            // //         }
+            // // }, 10000);
+
+        },
+        updateUserStatus: function(){
+            var self=this;
+            let status;
+            self.dialogVisible=false;
+
+            if(self.userStatus==="READY")
+                status="BUSY";
+            else
+                status="READY";
+
+            axios.post('http://localhost:3000/api/request/updateUserStatus', {
+                id: self.userId,
+                status: status,
+            },{ headers: { token: self.token } })
                 .then(function (response) {
-                    self.requests = response.data;
-                    console.log(self.requests);
-                    self.refDataTable();
+                    self.userStatus=status;
+                    self.msg="Đổi trạng thái thành công";
                 })
                 .catch(function (error) {
-                    if (error.response.status === 401) {
+                    if (error.response.status===401){
                         new Promise(function (resolve) {
                             self.refreshToken();
                             resolve();
                         }).then(function () {
-                            if (self.requestsVisible === true) {
-                                self.getAllRequest();
-                            }
+                            self.updateUserStatus();
                         })
                         return;
+                    }else {
+                            self.err="Đã xảy ra lỗi khi update trạng thái";
                     }
-                }).then(function () {});
+                }).then(function () {
+
+            });
         },
-        notifyRequestTimeout: function(){
-            self=this;
-            requestArr= self.requests;
-            var index=0;
-            if(self.userStatus==="BUSY")
-            {
-                alert("Khong the nhan request o trang thai BUSY");
-                return;
-            }
-            $(document).ready(function(){
-                $('#dialog').dialog({
-                    height: 50,
-                    width: 350,
-                    modal: true,
-                    resizable: true,
-                    dialogClass: 'no-close success-dialog',
-                    buttons: { 
-                        "Từ chối": {
-                        text: "Từ chối",
-                        id:"cancel",
-                    click:function() { $(this).dialog("close"); }},
-                    "Chấp nhận":{ 
-                    text:"Chấp nhận",
-                    id:"accept" ,
-                    click: function() { 
-                      
-                        self.requestsVisible=false;
-                        dialogVisible=false;
-                        setTimeout(() => {
-                            self.mapVisible=true;
-                        }, 2000);
-                       
-                      
-                        self.updateUserStatus();
-                        clearInterval(startInterval);  
-                        $("#dialog").dialog('close');   
-                       setTimeout(() => {
-                            self.initMap(requestArr[index]); 
-                           console.log("dia chi cua khach hang: ",self.requests[index].address);
-                        }, 2000);
-                           
-                       
-                    } }
-                }
-                });
-               
-            })
-            var content=requestArr[index].name+ '</br>'+ requestArr[index].phone+'</br>'+requestArr[index].address;
-            document.getElementById("dialog").innerHTML= content;
-           
-            var startInterval = setInterval(function(){
-                if(index< requestArr.length)
-                    {
-                        index++;
-                        $("#dialog").dialog();
-                        var content=requestArr[index].name+ '</br>'+ requestArr[index].phone+'</br>'+requestArr[index].address;
-                        document.getElementById("dialog").innerHTML= content;
-                        //alert(requestArr[index].name);
-                       
+        updateRequestStatus:function (status) {
+            var self=this;
+            axios.post('http://localhost:3000/api/request/updateRequestStatus', {
+                id: self.request2.id_request,
+                status: status,
+            },{ headers: { token: self.token } })
+                .then(function (response) {
+                    if (status===3){
+                        self.msg="Nhận request thành công";
                     }
-                    else
-                    {
-                        $("#dialog").dialog();
-                        document.getElementById("dialog").innerHTML ="Khong co request nao!";                      
-                        clearInterval(startInterval);  
-                        $("#dialog").dialog('close');                      
+                    if (status===4){
+                        self.msg="Hoàn thành request";
                     }
-            }, 10000);
-                
-           
-               
-        },
-        updateUserStatus: function(){
-            self=this;
-            if(self.userStatus==="READY")
-                self.userStatus="BUSY";
-            else
-                 self.userStatus="READY";
-            axios.post('http://localhost:3000/api/request/updateUserStatus',{
-                ID: self.userId,
-                Status: self.userStatus
-            },{
-                  
-                    headers: {
-                        token: self.token
+                })
+                .catch(function (error) {
+                    if (error.response.status===401){
+                        new Promise(function (resolve) {
+                            self.refreshToken();
+                            resolve();
+                        }).then(function () {
+                            self.updateRequestStatus(status);
+                        })
+                        return;
+                    }else if (error.response.status===406) {
+                        if (status===3){
+                            self.err="Đã có người nhận vui lòng đợi request khác";
+                        }
                     }
-                    })
-                    .then(function (response) {
-                        console.log("da vao day");
-                        
-                    })
-                    .catch(function (error) {
-                        alert(error);
-                    }).then(function () {
-                        
-                    
-            })
+                }).then(function () {
+
+            });
         },
         refreshToken: function () {
             var self = this;
@@ -212,7 +233,7 @@ var vm = new Vue({
                         self.requestsVisible = false;
                         self.mapVisible = false;
                     }
-                }).then(function () {})
+                })
         },
         setupSSE: function () {
             var self = this;
@@ -221,32 +242,19 @@ var vm = new Vue({
                 return;
             }
 
-            var add = new EventSource('http://localhost:3000/requestAddedEvent');
+            var add = new EventSource('http://localhost:3000/driverReceive?userName='+self.userName);
 
             add.onerror = function (e) {
                 console.log('error: ' + e);
             }
-            add.addEventListener('REQUEST_ADDED', function (e) {
+            add.addEventListener('DRIVER_RECEIVE', function (e) {
                 var data = JSON.parse(e.data);
-                self.requests.push(data);
-                self.refDataTable();
-                $('#tableDH tbody').on('click', 'tr', function () {
-                    if ($(this).hasClass('selected')) {
-                        $(this).removeClass('selected');
-                    } else {
-                        table.$('tr.selected').removeClass('selected');
-                        $(this).addClass('selected');
-                    }
-                });
-            }, false);
-            var remove = new EventSource('http://localhost:3000/requestRemoveEvent');
-            remove.onerror = function (e) {
-
-                console.log('error: ' + e);
-            }
-            remove.addEventListener('REQUEST_REMOVE', function (e) {
-                var data = JSON.parse(e.data);
-                self.getAllRequest();
+                self.request=data;
+                if (self.mapVisible===false){
+                    self.dialogVisible=true;
+                }
+                //self.notifyRequestTimeout();
+                //console.log(data);
             }, false);
         },
         refDataTable: function () {
@@ -265,16 +273,13 @@ var vm = new Vue({
                 });
             })
         },
-        initMap: function (requestArr) {     
+        initMap: function (requestArr) {
             self=this;
+            console.log(self.mapVisible);
+            var latlng = new google.maps.LatLng(10.762622, 106.660172);
             var options = {
-                center: {
-                    lat: 10.762622,
-                    lng: 106.660172
-                },
+                center:latlng,
                 zoom: 12,
-                mapTypeId:google.maps.MapTypeId.ROADMAP
-
             }
             console.log(self.userStatus);
             var map = new google.maps.Map(document.getElementById("map"),options);
@@ -286,7 +291,7 @@ var vm = new Vue({
                 marker = new google.maps.Marker({
                     position: props.coords,
                     map: map,
-                   
+
                 });
 
                 if (props.iconImage) {
@@ -339,8 +344,8 @@ var vm = new Vue({
             directionsDisplay.setMap(map);
 
               calculateAndDisplayRoute(directionsService, directionsDisplay);
-           
-            
+
+
             function calculateAndDisplayRoute(directionsService, directionsDisplay) {
                 directionsService.route({
                   origin: markers[1].coords,
@@ -385,14 +390,14 @@ var vm = new Vue({
 
             google.maps.event.addListener(map, 'click', function (event) {
 
-                var distance = haversinFormula(event.latLng);            
-               
+                var distance = haversinFormula(event.latLng);
+
                 console.log(distance);
                 if (distance > 0.1) {
                     alert("Distance is greater than 100m, cannot update location!");
                     return;
                 } else {
-                    
+
                     marker.setPosition(event.latLng);
                     markers[1].coords.lat=event.latLng.lat();
                     markers[1].coords.lng= event.latLng.lng();
@@ -401,15 +406,17 @@ var vm = new Vue({
                 }
             })
         },
-       
+
         closeMap: function () {
             var self = this;
-            self.updateUserStatus();
             self.mapVisible = false;
             self.requestsVisible = true;
-            self.getAllRequest();
+            self.dialogVisible=false;
             self.msg = "";
-            self.err = ""
+            self.err = "";
+            self.request={},
+            self.request2={},
+            self.updateRequestStatus(4);
         }
     }
 });
