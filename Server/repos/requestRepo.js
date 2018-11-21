@@ -19,8 +19,7 @@ exports.loadAllRequestApp2=()=>{
 }
 
 exports.loadUserInfo=(userName)=>{
-    var sql = `select * from users where username = '${"caothang3"}'`;
-    //console.log(sql);
+    var sql = `select * from users where username = '${userName}'`;
     return db.load(sql);
 }
 exports.updateGeocoder=(id,lat,lng)=>{
@@ -47,13 +46,13 @@ exports.updateUserStatus = (id,status)=>{
      console.log(sql);
      return db.insert(sql);
 }
-exports.updateRequestStatus = (id,status)=>{
+exports.updateRequestStatus = (id,status,userName)=>{
     if (status===3){
-        var sql = `update request set status = '${status}'
+        var sql = `update request set status = '${status}', username='${userName}'
                 where id_request = '${id}' and status='2'`;
     }
     if (status===4){
-        var sql = `update request set status = '${status}'
+        var sql = `update request set status = '${status}', username='${userName}'
                 where id_request = '${id}' and status='3'`;
     }
     return db.insert(sql);

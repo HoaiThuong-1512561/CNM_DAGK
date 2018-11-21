@@ -13,6 +13,7 @@ var vm = new Vue({
         mapVisible:false,
         requests: [],
         token:"",
+        driverName:'caothien',
         refToken:"",
         geocoder : {lat: 10.7623314, lng: 106.6820053},
         address:"",
@@ -118,13 +119,26 @@ var vm = new Vue({
             }, false);
             var remove = new EventSource('http://localhost:3000/requestRemoveEvent');
             remove.onerror = function(e) {
-
                 console.log('error: ' + e);
             }
             remove.addEventListener('REQUEST_REMOVE', function(e) {
                 var data = JSON.parse(e.data);
                 self.getAllRequest();
+                self.refDataTable();
             }, false);
+
+            var updateLocale = new EventSource('http://localhost:3000/driverLocale');
+            updateLocale.onerror = function(e) {
+
+                console.log('error: ' + e);
+            }
+            updateLocale.addEventListener('DRIVER_LOCALE', function(e) {
+                var data = JSON.parse(e.data);
+                console.log(data);
+                self.getUserInfo(self.driverName);
+            }, false);
+
+
         },
         refDataTable:function () {
             new Promise(function (resolve,reject) {
@@ -148,68 +162,69 @@ var vm = new Vue({
         initMap:function() {
 
             var self=this;
-            var geocoder = new google.maps.Geocoder();
-            geocoder.geocode( { 'address': self.address}, function(results, status) {
+            var myOptions={
+                zoom:16,
+                center: self.geocoderSrc,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            }
+            var map = new google.maps.Map(document.getElementById('map'),myOptions);
+            directionsService = new google.maps.DirectionsService();    // Khởi tạo DirectionsService - thằng này có nhiệm vụ tính toán chỉ đường cho chúng ta.
+            directionsDisplay = new google.maps.DirectionsRenderer({map: map});    // Khởi tạo DirectionsRenderer - thằng này có nhiệm vụ hiển thị chỉ đường trên bản đồ sau khi đã tính toán.
 
-                if (status == google.maps.GeocoderStatus.OK) {
-                    var myOptions={
-                        zoom:16,
-                        center: self.geocoderSrc,
-                        mapTypeId:google.maps.MapTypeId.ROADMAP
-                    }
-                    var map = new google.maps.Map(document.getElementById('map'),myOptions);
-                    directionsService = new google.maps.DirectionsService();    // Khởi tạo DirectionsService - thằng này có nhiệm vụ tính toán chỉ đường cho chúng ta.
-                    directionsDisplay = new google.maps.DirectionsRenderer({map: map});    // Khởi tạo DirectionsRenderer - thằng này có nhiệm vụ hiển thị chỉ đường trên bản đồ sau khi đã tính toán.
-
-                    directionsService.route({    // hàm route của DirectionsService sẽ thực hiện tính toán với các tham số truyền vào
-                        origin: self.geocoderSrc,
-                        destination: self.geocoderDes,    // điểm đích
-                        travelMode: "DRIVING"   // phương tiện di chuyển
-                    }, function(response, status) {    // response trả về bao gồm tất cả các thông tin về chỉ đường
-                        if (status === google.maps.DirectionsStatus.OK) {
-                            directionsDisplay.setDirections(response); // hiển thị chỉ đường trên bản đồ (nét màu đỏ từ A-B)
-                        } else {
-                            window.alert('Request for getting direction is failed due to ' + status);    // Hiển thị lỗi
-                        }
-                    });
-                }else {
-                    //alert("Không tìm thấy địa chỉ");
-                    var myOptions={
-                        zoom:16,
-                        center: self.geocoderSrc,
-                        mapTypeId:google.maps.MapTypeId.ROADMAP
-                    }
-                    var map = new google.maps.Map(document.getElementById('map'),myOptions);
-                    directionsService = new google.maps.DirectionsService();    // Khởi tạo DirectionsService - thằng này có nhiệm vụ tính toán chỉ đường cho chúng ta.
-                    directionsDisplay = new google.maps.DirectionsRenderer({map: map});    // Khởi tạo DirectionsRenderer - thằng này có nhiệm vụ hiển thị chỉ đường trên bản đồ sau khi đã tính toán.
-
-                    directionsService.route({    // hàm route của DirectionsService sẽ thực hiện tính toán với các tham số truyền vào
-                        origin: self.geocoderSrc,
-                        destination: self.geocoderDes,    // điểm đích
-                        travelMode: "DRIVING"   // phương tiện di chuyển
-                    }, function(response, status) {    // response trả về bao gồm tất cả các thông tin về chỉ đường
-                        if (status === google.maps.DirectionsStatus.OK) {
-                            directionsDisplay.setDirections(response); // hiển thị chỉ đường trên bản đồ (nét màu đỏ từ A-B)
-                        } else {
-                            window.alert('Request for getting direction is failed due to ' + status);    // Hiển thị lỗi
-                        }
-                    });
+            directionsService.route({    // hàm route của DirectionsService sẽ thực hiện tính toán với các tham số truyền vào
+                origin: self.geocoderSrc,
+                destination: self.geocoderDes,    // điểm đích
+                travelMode: "DRIVING"   // phương tiện di chuyển
+            }, function(response, status) {    // response trả về bao gồm tất cả các thông tin về chỉ đường
+                if (status === google.maps.DirectionsStatus.OK) {
+                    directionsDisplay.setDirections(response); // hiển thị chỉ đường trên bản đồ (nét màu đỏ từ A-B)
+                } else {
+                    window.alert('Request for getting direction is failed due to ' + status);    // Hiển thị lỗi
                 }
             });
 
 
         },
+        getUserInfo: function(userName){
+            var self = this;
+            console.log(userName);
+            axios.post('http://localhost:3000/api/request/getUserInfo',{userName:userName},{ headers: { token: self.token }})
+                .then(function (response) {
+                    self.geocoderSrc.lat=parseFloat(response.data[0].lat);
+                    self.geocoderSrc.lng=parseFloat(response.data[0].lng);
+                    console.log(response.data[0].lat);
+                }).catch(function (error) {
+                if (error.response.status===401){
+                    new Promise(function (resolve) {
+                        self.refreshToken();
+                        resolve();
+                    }).then(function () {
+                        self.getUserInfo(userName);
+                    })
+                    return;
+                }else {
+
+                }
+            }).then(function () {
+                if (self.mapVisible===true){
+                    self.initMap();
+                }
+            });
+        },
         editGeocoder:function () {
-            if ($('#tableDH').DataTable().row('.selected').data()[6]==="Đã có xe nhận"){
+            if ($('#tableDH').DataTable().row('.selected').data()[6]==="Đang di chuyển"){
                 var self=this;
                 self.idEdit=parseInt($('#tableDH').DataTable().row('.selected').data()[0]);
                 self.mapVisible=true;
                 self.requestsVisible=false;
+
                 new Promise(function (resolve,reject) {
 
                     var i;
                     for (i=0;i<self.requests.length;i++){
                         if (self.requests[i].id_request===parseInt($('#tableDH').DataTable().row('.selected').data()[0])){
+                            self.driverName=self.requests[i].username;
+                            self.getUserInfo(self.requests[i].username);
                             self.geocoderDes.lat=self.requests[i].lat;
                             self.geocoderDes.lng=self.requests[i].lng;
                             self.address=self.requests[i].address;
@@ -217,7 +232,9 @@ var vm = new Vue({
                         }
                     }
                 }).then(function () {
-                    self.initMap();
+                    setTimeout(() => {
+                        self.initMap();
+                    }, 1000);
                 })
             }else {
                 console.log($('#tableDH').DataTable().row('.selected').data()[6]);

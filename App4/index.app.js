@@ -2,14 +2,25 @@
 window.onload = function () {
     //vm.setupSSE();
     //vm.initMap();
-    // loadCategories();
+    // while (true){
+    //     setTimeout(() => {
+    //         if (vm.second>0){
+    //             vm.second=vm.second-1;
+    //         }
+    //     }, 1000);
+    // }
+  setInterval(function(){
+        if(vm.second > 0)
+            vm.second=vm.second-1;
+    },1000);
+
 };
 var vm = new Vue({
     el: '#container',
     data: {
         userName: '',
         password: '',
-        SDT: '',  
+        SDT: '',
         loginVisible: true,
         requestsVisible: false,
         mapVisible: false,
@@ -25,11 +36,15 @@ var vm = new Vue({
         idEdit: 0,
         msg: "",
         err: "",
-
+        second:10,
         request2:{},
-        numDeltas: 100,
-        delay: 10,
-        i: 0,
+        geocoder : {lat: 10.7623314, lng: 106.6820053},
+        numDeltas : 100,
+        delay : 10,
+        i : 0,
+        deltaLat:0,
+        deltaLng:0,
+        map1:false
 
     },
     methods: {
@@ -43,16 +58,15 @@ var vm = new Vue({
                     self.requestsVisible = false;
                     self.loginVisible = false;
                     //self.endTripVisible=false;
-                    self.mapVisible=true;                
+                    self.mapVisible=true;
                     self.userId = response.data.user.ID;
                     self.userStatus = response.data.user.Status;
                     self.token = response.data.access_token;
                     self.refToken = response.data.refresh_token;
                     requestArr = self.request;
                     setTimeout(() => {
-                        self.initMap(requestArr);
+                        self.initMap2();
                     }, 1000);
-                    //self.getUserInfo(self.userName);
 
                 })
                 .catch(function (error) {
@@ -61,21 +75,26 @@ var vm = new Vue({
         },
         getUserInfo: function(userName){
             var self = this;
-            axios.get('http://localhost:3000/api/request/getUserInfo', {
-
-                headers: {
-                    token: self.token
-                }
-                })
+            axios.post('http://localhost:3000/api/request/getUserInfo',{userName:self.userName},{ headers: { token: self.token }})
                 .then(function (response) {
                     self.SDT= response.data[0].SDT;
+                    console.log(self.SDT);
                     self.setupSSE();
-                })
-                .catch(function (error) {
-                    alert(error);
-                }).then(function () {
+                }).catch(function (error) {
+                if (error.response.status===401){
+                    new Promise(function (resolve) {
+                        self.refreshToken();
+                        resolve();
+                    }).then(function () {
+                        self.getUserInfo(userName);
+                    })
+                    return;
+                }else {
+                    self.err="Đã xảy ra lỗi khi update trạng thái";
+                }
+            }).then(function () {
 
-                })
+            });
         },
         notifyRequestTimeout: function(){
             self=this;
@@ -134,6 +153,7 @@ var vm = new Vue({
             axios.post('http://localhost:3000/api/request/updateRequestStatus', {
                 id: self.request2.id_request,
                 status: status,
+                userName:self.userName
             },{ headers: { token: self.token } })
                 .then(function (response) {
                     if (status===3){
@@ -141,6 +161,8 @@ var vm = new Vue({
                     }
                     if (status===4){
                         self.msg="Hoàn thành request";
+                        self.request={};
+                        self.request2={};
                     }
                 })
                 .catch(function (error) {
@@ -165,8 +187,8 @@ var vm = new Vue({
             var self=this;
             axios.post('http://localhost:3000/api/request/updateDriverLocationRequest', {
                 ID: self.userId,
-                lat: self.driverLocation.lat,
-                lng: self.driverLocation.lng,
+                lat: self.geocoder.lat,
+                lng: self.geocoder.lng,
             },{ headers: { token: self.token } })
                 .then(function (response) {
                     self.msg="Cập nhật thành công";
@@ -223,26 +245,11 @@ var vm = new Vue({
                 self.request=data;
                 if (self.mapVisible===false){
                     self.dialogVisible=true;
+                    self.second=10;
                 }
                 //self.notifyRequestTimeout();
                 console.log(data);
             }, false);
-        },
-        refDataTable: function () {
-            new Promise(function (resolve, reject) {
-                $('#tableDH').DataTable().destroy();
-                resolve();
-            }).then(function () {
-                var table = $('#tableDH').DataTable();
-                $('#tableDH tbody').on('click', 'tr', function () {
-                    if ($(this).hasClass('selected')) {
-                        $(this).removeClass('selected');
-                    } else {
-                        table.$('tr.selected').removeClass('selected');
-                        $(this).addClass('selected');
-                    }
-                });
-            })
         },
         initMap: function (requestArr) {
             self=this;
@@ -294,8 +301,8 @@ var vm = new Vue({
            {
             // Driver location
             coords: {
-                lat: self.driverLocation.lat,
-                lng: self.driverLocation.lng
+                lat: self.geocoder.lat,
+                lng: self.geocoder.lng
             }
         }
         ];
@@ -318,9 +325,10 @@ var vm = new Vue({
 
 
             function calculateAndDisplayRoute(directionsService, directionsDisplay) {
+
                 directionsService.route({
-                  origin: markers[1].coords,
-                  destination: markers[0].coords,
+                  origin:self.geocoder,
+                  destination:markers[0].coords ,
                   travelMode: 'DRIVING'
                 }, function(response, status) {
                   if (status === 'OK') {
@@ -342,8 +350,8 @@ var vm = new Vue({
                 var lat1 = point1.lat();
 
                 // 227 nguyen van cu, quan 5 (diem co dinh cua tai xe)
-                var lat2 = markers[1].coords.lat;
-                var lon2 = markers[1].coords.lng;
+                var lat2 = self.geocoder.lat;
+                var lon2 = self.geocoder.lng;
                 console.log("marker 1 la: ", markers[1].coords);
 
                 var dLon = (lon2 - lon1).toRad();
@@ -370,25 +378,84 @@ var vm = new Vue({
                 } else {
 
                     marker.setPosition(event.latLng);
-                    self.driverLocation.lat=event.latLng.lat();
-                    self.driverLocation.lng= event.latLng.lng();
+                    console.log(event.latLng.lat());
+                    console.log(self.geocoder.lat);
+                    console.log(self.geocoder.lng);
+                    console.log(self.geocoder);
+
+                    self.geocoder.lat=event.latLng.lat();
+                    self.geocoder.lng= event.latLng.lng();
                     calculateAndDisplayRoute(directionsService, directionsDisplay);
+                    self.updateDriverLocation();
+                    calculateAndDisplayRoute(directionsService, directionsDisplay);
+
                     console.log("marker khi thay doi la: ", markers[1].coords);
                 }
             })
         },
+        initMap2:function() {
 
+            var self=this;
+            self.map1=true;
+            var myOptions={
+                zoom:16,
+                center: self.geocoder,
+                mapTypeId:google.maps.MapTypeId.ROADMAP
+            }
+            var map = new google.maps.Map(document.getElementById('map'),myOptions);
+            marker = new google.maps.Marker({
+                position: self.geocoder,
+                map: map,
+                title: "Latitude:"+self.geocoder.lat+" | Longitude:"+self.geocoder.lng
+            });
+            google.maps.event.addListener(map, 'click', function(event) {
+                var result = [event.latLng.lat(), event.latLng.lng()];
+                self.transition(result);
+            });
+
+        },
+        transition:function (result) {
+            var self=this;
+            self.i = 0;
+            self.deltaLat = (result[0] - self.geocoder.lat)/self.numDeltas;
+            self.deltaLng = (result[1] - self.geocoder.lng)/self.numDeltas;
+            self.moveMarker();
+        },
+        moveMarker:function () {
+            var self=this;
+            self.msg="";
+            self.err=""
+            self.geocoder.lat += self.deltaLat;
+            self.geocoder.lng += self.deltaLng;
+            var latlng = new google.maps.LatLng(self.geocoder.lat, self.geocoder.lng);
+            marker.setTitle("Latitude:"+self.geocoder.lat+" | Longitude:"+self.geocoder.lng);
+            marker.setPosition(latlng);
+            if(self.i!=self.numDeltas){
+                self.i++;
+                setTimeout(self.moveMarker, self.delay);
+            }
+        },
         closeMap: function () {
             var self = this;
-            self.mapVisible = false;
-            self.requestsVisible = true;
-            self.dialogVisible=false;
-            self.getUserInfo();
-            self.msg = "";
-            self.err = "";
-            self.request={},
-            self.request2={},
-            self.updateRequestStatus(4);
+            if (self.map1===true){
+                self.map1=false;
+                self.mapVisible = false;
+                self.requestsVisible = true;
+                self.dialogVisible=false;
+                self.getUserInfo(self.userName);
+                self.msg = "";
+                self.err = "";
+                self.second=10;
+            }else {
+                self.mapVisible = false;
+                self.requestsVisible = true;
+                self.dialogVisible=false;
+                self.getUserInfo(self.userName);
+                self.msg = "";
+                self.err = "";
+                self.updateRequestStatus(4);
+            }
+
         }
     }
 });

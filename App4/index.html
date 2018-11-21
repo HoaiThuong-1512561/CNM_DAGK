@@ -177,8 +177,10 @@
 				<div id="dialog" title="Basic dialog">
 					<p></p>
 				</div>
-			</div>
+				<div style="color: darkgreen" v-if="second === 0">Không có request mới</div>
+				<div style="color: darkgreen" v-if="second > 0">Làm mới request trong...{{second}}s</div>
 
+			</div>
 			<div v-if="dialogVisible">
 				<div style="color: red">{{err}}</div>
 				<h1>Thông tin đặt xe</h1>
@@ -240,7 +242,7 @@
 
 
 	<script async defer
-			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4qFj8fv3AYqhSvBiSvCkPWB89NhfSOvY&callback=initMap">
+			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4qFj8fv3AYqhSvBiSvCkPWB89NhfSOvY&callback">
 	</script>
 
 

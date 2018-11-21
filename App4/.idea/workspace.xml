@@ -2,25 +2,21 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="bd1c9405-3be4-4a81-b30c-e3557b905c99" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/App4.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../App3/.idea/App3.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../App3/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../App3/.idea/modules.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../App3/.idea/vcs.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/../App3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../App2/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../App2/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../App3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../App3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App3/index.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../App3/index.app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/index.app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/apiControllers/app4Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/apiControllers/app4Controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/apiControllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/apiControllers/requestController.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/app.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/package-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/package.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/repos/authRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/repos/authRepo.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/repos/requestRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/repos/requestRepo.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/repos/userRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/repos/userRepo.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -35,77 +31,63 @@
     <session id="-752504050">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="1" />
+          <entry key="project.closed" value="2" />
           <entry key="project.open.time.2" value="1" />
-          <entry key="project.opened" value="1" />
+          <entry key="project.open.time.6" value="1" />
+          <entry key="project.opened" value="2" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="html" value="2" />
+          <entry key="html" value="3" />
           <entry key="js" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="HTML" value="2" />
+          <entry key="HTML" value="3" />
           <entry key="JavaScript" value="1" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="html" value="205" />
-          <entry key="js" value="785" />
+          <entry key="html" value="353" />
+          <entry key="js" value="1418" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="HTML" value="205" />
-          <entry key="JavaScript" value="785" />
+          <entry key="HTML" value="353" />
+          <entry key="JavaScript" value="1418" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <leaf>
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-1042">
-              <caret line="149" column="18" lean-forward="true" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="18" />
+            <state relative-caret-position="120">
+              <caret line="180" column="47" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
               <folding>
                 <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
                 <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-                <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/index.app.js">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="44">
-              <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
-              <folding>
-                <element signature="e#5965#6951#0" />
-                <element signature="e#7014#7661#0" />
-                <element signature="e#7693#9012#0" />
-                <element signature="e#9048#9674#0" />
-                <element signature="e#9715#14535#0" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
       <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/../App3/index.html">
+        <entry file="file://$PROJECT_DIR$/index.app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="540">
-              <caret line="138" column="64" selection-start-line="138" selection-start-column="64" selection-end-line="138" selection-end-column="64" />
+            <state relative-caret-position="235">
+              <caret line="150" column="31" lean-forward="true" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
               <folding>
-                <element signature="n#style#0;n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+                <element signature="e#3122#3202#0" />
+                <element signature="e#6431#7057#0" />
               </folding>
             </state>
           </provider>
@@ -118,6 +100,12 @@
       <find>getAllRequest</find>
       <find>\&lt;\!DOCTYPE html\&gt;\n\&lt;html\&gt;\n\n\&lt;head\&gt;\n\	\&lt;title\&gt;APP 4\: Driver location\&lt;\/title\&gt;\n\	\&lt;meta charset\=\&quot;utf\-8\&quot; \/\&gt;\n\	\&lt;link rel\=\&quot;stylesheet\&quot; href\=\&quot;https\:\/\/maxcdn\.bootstrapcdn\.com\/bootstrap\/3\.3\.7\/css\/bootstrap\.min\.css\&quot; integrity\=\&quot;sha384\-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va\+PmSTsz\/K68vbdEjh4u\&quot;\n\	 crossorigin\=\&quot;anonymous\&quot; \/\&gt;\n\	\&lt;link rel\=\&quot;stylesheet\&quot; href\=\&quot;https\:\/\/cdn\.datatables\.net\/1\.10\.19\/css\/jquery\.dataTables\.min\.css\&quot; \/\&gt;\n\	\&lt;\!\-\- \&lt;link rel\=\&quot;stylesheet\&quot; href\=\&quot;\/\/code\.jquery\.com\/ui\/1\.12\.4\/themes\/base\/jquery\-ui\.css\&quot;\/\&gt; \-\-\&gt;\n\n\	\&lt;style\&gt;\n\n\	\	\#map\{\n\	\	\	height\: 100vh\;\n\	\	\	width\: 80vw\;\n\	\	\	margin\: 0px\;\n\	\	\	padding\: 0px\;\n\	\	\}\n\	\	html\, body \{\n\	\	\	height\: 100\%\;\n\	\	\	margin\: 0\;\n\	\	\	padding\: 0\;\n\	\	\}\n\n\	\	\.ui\-widget \{\n\	\	\	font\-family\: Verdana\,Arial\,sans\-serif\;\n\	\	\	font\-size\: \.8em\;\n\	\	\}\n\n\	\	\.ui\-widget\-content \{\n\	\	\	background\: \#F9F9F9\;\n\	\	\	border\: 1px solid \#90d93f\;\n\	\	\	color\: \#222222\;\n\n\	\	\}\n\n\	\	\.ui\-dialog \{\n\	\	\	left\: 0\;\n\	\	\	outline\: 0 none\;\n\	\	\	padding\: 0 \!important\;\n\	\	\	position\: absolute\;\n\	\	\	top\: 5px\;\n\	\	\}\n\n\	\	\#dialog \{\n\	\	\	padding\: 16px \!important\;\n\	\	\	margin\: 0\;\n\n\	\	\}\n\n\	\	\.ui\-dialog \.ui\-dialog\-content \{\n\	\	\	background\: none repeat scroll 0 0 transparent\;\n\	\	\	border\: 0 none\;\n\	\	\	overflow\: auto\;\n\	\	\	position\: relative\;\n\	\	\	padding\: 0 \!important\;\n\	\	\	text\-align\: center\;\n\	\	\	height\: 104px \!important\;\n\	\	\}\n\n\	\	\.ui\-widget\-header \{\n\	\	\	background\: \#b0de78\;\n\	\	\	border\: 0\;\n\	\	\	color\: \#fff\;\n\	\	\	font\-weight\: normal\;\n\	\	\	text\-align\: center\;\n\	\	\}\n\n\	\	\.ui\-dialog \.ui\-dialog\-titlebar \{\n\	\	\	padding\: 0\.1em \.5em\;\n\	\	\	position\: relative\;\n\	\	\	font\-size\: 1em\;\n\	\	\}\n\	\	\.ui\-dialog\-titlebar button\{\n\	\	\	background\-image\: url\(images\/ui\-icons_777777_256x240\.png\)\;\n\	\	\}\n\n\	\	\#cancel\{\n\	\	\	margin\-left\: 238px\;\n\	\	\	margin\-top\: 16px\;\n\	\	\	background\-color\: green\;\n\	\	\}\n\	\	\#accept\{\n\	\	\	margin\-left\: 155px\;\n\	\	\	margin\-bottom\: 16px\;\n\	\	\	background\-color\: gray\;\n\	\	\}\n\	\	\.container\{\n\n\	\	\}\n\	\	\.containerdesign \{\n\	\	\	position\: absolute\;\n\	\	\	left\: 600px\;\n\	\	\	margin\-top\:200px\;\n\	\	\	max\-width\: 450px\;\n\	\	\	padding\: 50px\;\n\	\	\	background\-color\: white\;\n\	\	\	border\-radius\: 10px\;\n\	\	\}\n\	\	\.bg\-img \{\n\n\	\	\}\n\	\	\.btn \{\n\n\	\	\}\n\	\	\.btn\:hover \{\n\	\	\	opacity\: 1\;\n\	\	\}\n\n\	\	\	\#cancel\{\n\	\	\	\	margin\-left\: 238px\;\n\	\	\	\	margin\-top\: 16px\;\n\	\	\	\	background\-color\: green\;\n\	\	\	\}\n\	\	\	\#accept\{\n\	\	\	\	margin\-left\: 155px\;\n\	\	\	\	margin\-bottom\: 16px\;\n\	\	\	\	background\-color\: gray\;\n\	\	\	\}\n\n\	\	\	\.endTrip\{\n\	\	\	\	float\: right\;\n\	\	\	\	background\-color\: green\;\n\	\	\	\	margin\-left\: 20px\;\n\	\	\	\	position\: relative\;\n\	\	\	\	right\: \-54px\;\n\	\	\	\	top\: \-248px\;\n\n\	\	\	\}\n\	\	\&lt;\/style\&gt;\n\&lt;\/head\&gt;\n\n\n\&lt;body\&gt;\n\	\&lt;div class\=\&quot;bg\-img\&quot;\&gt;\n\	\	\&lt;div class\=\&quot;container\&quot; id\=\&quot;container\&quot;\&gt;\n\	\	\	\&lt;div id\=\&quot;login\&quot; v\-if\=\&quot;loginVisible\&quot;\&gt;\n\	\	\	\	\&lt;h2 style\=\&quot;text\-align\:center\&quot;\&gt;Đăng nhập tài khoản\&lt;\/h2\&gt;\n\	\	\	\	\&lt;div class\=\&quot;form\-group\&quot;\&gt;\n\	\	\	\	\	\&lt;label\&gt;Tên đăng nhập\:\&lt;\/label\&gt;\n\	\	\	\	\	\&lt;input type\=\&quot;text\&quot; class\=\&quot;form\-control\&quot; placeholder\=\&quot;Nhập tên\.\.\.\&quot; v\-model\=\&quot;userName\&quot;\&gt;\n\	\	\	\	\&lt;\/div\&gt;\n\	\	\	\	\&lt;div class\=\&quot;form\-group\&quot;\&gt;\n\	\	\	\	\	\&lt;label\&gt;Mật khẩu\:\&lt;\/label\&gt;\n\	\	\	\	\	\&lt;input type\=\&quot;text\&quot; class\=\&quot;form\-control\&quot; v\-model\=\&quot;password\&quot;\&gt;\n\	\	\	\	\&lt;\/div\&gt;\n\	\	\	\	\&lt;div style\=\&quot;color\: red\&quot;\&gt;\{\{err\}\}\&lt;\/div\&gt;\n\	\	\	\	\&lt;button type\=\&quot;button\&quot; class\=\&quot;btn btn\-success\&quot; \@click\=\&quot;login\&quot;\&gt;Đăng nhập\&lt;\/button\&gt;\n\	\	\	\&lt;\/div\&gt;\n\	\	\	\&lt;div v\-if\=\&quot;requestsVisible\&quot;\&gt;\n\	\	\	\	\&lt;h1\&gt;Thông tin tài xế\&lt;\/h1\&gt;\n\	\	\	\	\&lt;table class\=\&quot;table table\-hover border\&quot;\&gt;\n\	\	\	\	\	\&lt;thead\&gt;\n\	\	\	\	\	  \&lt;tr\&gt;\n\	\	\	\	\	\	\&lt;th\&gt;Tên tài xế\&lt;\/th\&gt;\n\	\	\	\	\	\	\&lt;th\&gt;Số điện thoại\&lt;\/th\&gt;\n\	\	\	\	\	\	  \&lt;th\&gt;Trạng thái\&lt;\/th\&gt;\n\	\	\	\	\	\	  \&lt;th\&gt;Đổi trạng thái\&lt;\/th\&gt;\n\n\	\	\	\	\	  \&lt;\/tr\&gt;\n\	\	\	\	\	\&lt;\/thead\&gt;\n\	\	\	\	\	\&lt;tbody\&gt;\n\	\	\	\	\	  \&lt;tr\&gt;\n\	\	\	\	\	\	\&lt;td\&gt;\{\{userName\}\}\&lt;\/td\&gt;\n\	\	\	\	\	\	\&lt;td\&gt;\{\{SDT\}\}\&lt;\/td\&gt;\n\	\	\	\	\	\	  \&lt;td\&gt;\{\{userStatus\}\}\&lt;\/td\&gt;\n\	\	\	\	\	\	  \&lt;td\&gt;\n\	\	\	\	\	\	\	  \&lt;button class\=\&quot;btn btn\-success\&quot; type\=\&quot;button\&quot; \@click\=\&quot;notifyRequestTimeout\&quot;\&gt;Nhận yêu cầu\&lt;\/button\&gt;\n\	\	\	\	\	\	  \&lt;\/td\&gt;\n\n\	\	\	\	\	  \&lt;\/tr\&gt;\n\	\	\	\	\	\&lt;\/tbody\&gt;\n\	\	\	\	\&lt;\/table\&gt;\n\	\	\	\	\&lt;\!\-\-\&lt;button class\=\&quot;btn btn\-success\&quot; type\=\&quot;button\&quot; \@click\=\&quot;notifyRequestTimeout\&quot;\&gt;Nhận yêu cầu\&lt;\/button\&gt;\-\-\&gt;\n\	\	\	\	\&lt;div id\=\&quot;dialog\&quot; title\=\&quot;Basic dialog\&quot;\&gt;\n\	\	\	\	\	\&lt;p\&gt;\&lt;\/p\&gt;\n\	\	\	\	\&lt;\/div\&gt;\n\	\	\	\&lt;\/div\&gt;\n\n\	\	\	\&lt;div v\-if\=\&quot;dialogVisible\&quot;\&gt;\n\	\	\	\	\&lt;h1\&gt;Thông tin đặt xe\&lt;\/h1\&gt;\n\	\	\	\	\&lt;table class\=\&quot;table table\-hover border\&quot;\&gt;\n\	\	\	\	\	\&lt;thead\&gt;\n\	\	\	\	\	\&lt;tr\&gt;\n\	\	\	\	\	\	\&lt;th\&gt;Tên\&lt;\/th\&gt;\n\	\	\	\	\	\	\&lt;th\&gt;Số điện thoại\&lt;\/th\&gt;\n\	\	\	\	\	\	\&lt;th\&gt;Địa chỉ\&lt;\/th\&gt;\n\	\	\	\	\	\	\&lt;th\&gt;Ghi chú\&lt;\/th\&gt;\n\	\	\	\	\	\&lt;\/tr\&gt;\n\	\	\	\	\	\&lt;\/thead\&gt;\n\	\	\	\	\	\&lt;tbody\&gt;\n\	\	\	\	\	\&lt;tr\&gt;\n\	\	\	\	\	\	\&lt;td\&gt;\{\{request\.name\}\}\&lt;\/td\&gt;\n\	\	\	\	\	\	\&lt;td\&gt;\{\{request\.phone\}\}\&lt;\/td\&gt;\n\	\	\	\	\	\	\&lt;td\&gt;\{\{request\.address\}\}\&lt;\/td\&gt;\n\	\	\	\	\	\	\&lt;td\&gt;\{\{request\.note\}\}\&lt;\/td\&gt;\n\	\	\	\	\	\&lt;\/tr\&gt;\n\	\	\	\	\	\&lt;\/tbody\&gt;\n\	\	\	\	\&lt;\/table\&gt;\n\	\	\	\	\&lt;button class\=\&quot;btn btn\-success\&quot; type\=\&quot;button\&quot; \@click\=\&quot;notifyRequestTimeout\&quot;\&gt;Nhận yêu cầu\&lt;\/button\&gt;\n\	\	\	\&lt;\/div\&gt;\n\	\	\	\&lt;div id\=\&quot;Gmap\&quot; v\-if\=\&quot;mapVisible\&quot;\&gt;\n\	\	\	\	\&lt;div style\=\&quot;color\: green\&quot;\&gt;\{\{msg\}\}\&lt;\/div\&gt;\n\	\	\	\	\&lt;div style\=\&quot;color\: red\&quot;\&gt;\{\{err\}\}\&lt;\/div\&gt;\n\	\	\	\	\&lt;div id\=\&quot;map\&quot; class\=\&quot;map\&quot;\&gt;\&lt;\/div\&gt;\n\	\	\	\&lt;\/div\&gt;\n\	\	\	\&lt;div class\=\&quot;endTrip\&quot;\&gt;\n\	\	\	\	\&lt;button type\=\&quot;button\&quot; class\=\&quot;btn btn\-success\&quot; \@click\=\&quot;closeMap\&quot;\&gt;Kết thúc\&lt;\/button\&gt;\n\	\	\	\&lt;\/div\&gt;\n\	\	\&lt;\/div\&gt;\n\	\&lt;\/div\&gt;\n\n\n\n\n\n\	\&lt;script src\=\&quot;https\:\/\/code\.jquery\.com\/jquery\-3\.3\.1\.js\&quot;\&gt;\&lt;\/script\&gt;\n\	\&lt;script src\=\&quot;https\:\/\/code\.jquery\.com\/ui\/1\.12\.1\/jquery\-ui\.js\&quot;\&gt;\&lt;\/script\&gt;\n\	\&lt;script src\=\&quot;https\:\/\/cdn\.datatables\.net\/1\.10\.19\/js\/jquery\.dataTables\.min\.js\&quot;\&gt;\&lt;\/script\&gt;\n\	\&lt;script src\=\&quot;https\:\/\/cdn\.datatables\.net\/1\.10\.19\/js\/dataTables\.bootstrap\.min\.js\&quot;\&gt;\&lt;\/script\&gt;\n\n\	\&lt;script src\=\&quot;https\:\/\/cdn\.jsdelivr\.net\/npm\/vue\&quot;\&gt;\&lt;\/script\&gt;\n\	\&lt;script src\=\&quot;https\:\/\/maxcdn\.bootstrapcdn\.com\/bootstrap\/3\.3\.7\/js\/bootstrap\.min\.js\&quot; integrity\=\&quot;sha384\-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa\&quot;\n\	 crossorigin\=\&quot;anonymous\&quot;\&gt;\n\	\&lt;\/script\&gt;\n\	\&lt;script src\=\&quot;https\:\/\/cdnjs\.cloudflare\.com\/ajax\/libs\/handlebars\.js\/4\.0\.12\/handlebars\.min\.js\&quot;\&gt;\&lt;\/script\&gt;\n\	\&lt;script src\=\&quot;index\.app\.js\&quot;\&gt;\&lt;\/script\&gt;\n\	\&lt;script src\=\&quot;https\:\/\/unpkg\.com\/axios\/dist\/axios\.min\.js\&quot;\&gt;\&lt;\/script\&gt;\n\n\	\&lt;script\&gt;\n\	\	\$\(document\)\.ready\(function \(\) \{\n\	\	\	\$\(\&quot;\#tableDH\&quot;\)\.DataTable\(\)\;\n\	\	\}\)\;\n\	\&lt;\/script\&gt;\n\n\	\&lt;script async defer src\=\&quot;https\:\/\/maps\.googleapis\.com\/maps\/api\/js\?key\=AIzaSyB4qFj8fv3AYqhSvBiSvCkPWB89NhfSOvY\&amp;callback\=initMap\&quot;\&gt;\n\	\&lt;\/script\&gt;\n\n\&lt;\/body\&gt;\n\n\&lt;\/html\&gt;\n</find>
       <find>setupSSE</find>
+      <find>closeMap</find>
+      <find>driverLocation</find>
+      <find>self.request={}</find>
+      <find>ini</find>
+      <find>add</find>
+      <find>geocoder</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -126,9 +114,9 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
+        <option value="$PROJECT_DIR$/../App3/index.html" />
         <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/index.app.js" />
-        <option value="$PROJECT_DIR$/../App3/index.html" />
       </list>
     </option>
   </component>
@@ -152,6 +140,7 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
+      <pane id="Scope" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -163,7 +152,6 @@
           <select />
         </subPane>
       </pane>
-      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
@@ -195,23 +183,19 @@
       <option name="presentableId" value="Default" />
       <updated>1542705968685</updated>
       <workItem from="1542705970891" duration="12372000" />
+      <workItem from="1542791258025" duration="12558000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="12372000" />
+    <option name="totallyTimeSpent" value="24930000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-1546" y="-8" width="1554" height="916" extended-state="6" />
-    <editor active="true" />
     <layout>
-      <window_info id="Favorites" side_tool="true" />
       <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.25" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
-      <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Version Control" show_stripe_button="false" />
-      <window_info anchor="bottom" id="Terminal" />
-      <window_info anchor="bottom" id="Event Log" side_tool="true" />
+      <window_info id="Favorites" order="2" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
       <window_info anchor="bottom" id="Run" order="2" />
@@ -219,6 +203,10 @@
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Terminal" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
       <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
       <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
       <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
@@ -231,39 +219,37 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/../App3/index.html">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="135" column="84" selection-start-line="135" selection-start-column="63" selection-end-line="135" selection-end-column="84" />
+          <folding>
+            <element signature="n#style#0;n#td#6;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-1042">
-          <caret line="149" column="18" lean-forward="true" selection-start-line="149" selection-start-column="18" selection-end-line="149" selection-end-column="18" />
+        <state relative-caret-position="120">
+          <caret line="180" column="47" selection-start-line="180" selection-start-column="47" selection-end-line="180" selection-end-column="47" />
           <folding>
             <element signature="n#style#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#2;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="n#style#0;n#div#3;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
             <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#0;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
-            <element signature="n#style#0;n#div#1;n#div#2;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/index.app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="44">
-          <caret line="180" column="30" selection-start-line="180" selection-start-column="30" selection-end-line="180" selection-end-column="30" />
+        <state relative-caret-position="235">
+          <caret line="150" column="31" lean-forward="true" selection-start-line="150" selection-start-column="31" selection-end-line="150" selection-end-column="31" />
           <folding>
-            <element signature="e#5965#6951#0" />
-            <element signature="e#7014#7661#0" />
-            <element signature="e#7693#9012#0" />
-            <element signature="e#9048#9674#0" />
-            <element signature="e#9715#14535#0" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/../App3/index.html">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="540">
-          <caret line="138" column="64" selection-start-line="138" selection-start-column="64" selection-end-line="138" selection-end-column="64" />
-          <folding>
-            <element signature="n#style#0;n#td#9;n#tr#0;n#tbody#0;n#table#0;n#div#0;n#div#1;n#div#0;n#div#0;n#div#1;n#div#0;n#div#0;n#body#0;n#html#0;n#!!top" expanded="true" />
+            <element signature="e#3122#3202#0" />
+            <element signature="e#6431#7057#0" />
           </folding>
         </state>
       </provider>

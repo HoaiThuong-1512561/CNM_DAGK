@@ -35,6 +35,7 @@ app.use('/app4/',app4Ctrl);
 app.get('/requestAddedEvent', events.subscribeRequestAdded);
 app.get('/requestRemoveEvent', events.subscribeRequestRemove);
 app.get('/driverReceive', events.subscribeDriverReceive);
+app.get('/driverLocale', events.subscribeDriverLocale);
 var port = process.env.PORT || 3000;
 app.listen(port, () => {
     console.log(`QLBH API is running on port ${port}`);

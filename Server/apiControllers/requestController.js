@@ -2,6 +2,7 @@ var express = require('express');
 
 var router = express.Router();
 var requestRepo = require('../repos/requestRepo');
+var userRepo = require('../repos/userRepo');
 var events = require('../events');
 //
 // load orders by User
@@ -30,8 +31,8 @@ router.get('/getAllRequestApp1', (req, res) => {
         })
 });
 
-router.get('/getUserInfo', (req, res) => {
-    requestRepo.loadUserInfo()
+router.post('/getUserInfo', (req, res) => {
+    requestRepo.loadUserInfo(req.body.userName)
     .then(rows => {
         res.json(rows);
     }).catch(err => {
@@ -54,7 +55,7 @@ router.get('/getAllRequestApp2', (req, res) => {
 });
 router.post('/updateGeocoderRequest', (req, res) => {
 
-    console.log(req.body);
+
     requestRepo.updateGeocoder(req.body.id, req.body.lat, req.body.lng).then(rows => {
         res.statusCode = 200;
         res.end('Done');
@@ -68,11 +69,10 @@ router.post('/updateGeocoderRequest', (req, res) => {
 });
 
 router.post('/updateDriverLocationRequest', (req,res)=>{
-    console.log(req.body);
     requestRepo.updateDriverLocation(req.body.ID, req.body.lat, req.body.lng).then(rows => {
+        events.publishDriverLocale("Done");
         res.statusCode = 200;
         res.end('Done');
-    
 
     }).catch(err => {
         console.log(err);
@@ -93,8 +93,9 @@ router.post('/updateUserStatus',(req,res)=>{
 });
 router.post('/updateRequestStatus',(req,res)=>{
     console.log(req.body.id+req.body.status);
-    requestRepo.updateRequestStatus(req.body.id, req.body.status).then(row=>{
+    requestRepo.updateRequestStatus(req.body.id, req.body.status,req.body.userName).then(row=>{
         if (row.affectedRows>0){
+            events.publishRequestRemove("done");
             res.statusCode=200;
             res.end('Done');
         }else {

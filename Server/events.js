@@ -9,7 +9,7 @@ var subscribeEventDriver = (req, res, event) => {
         'Cache-Control': 'no-cache',
         'Connection': 'keep-alive'
     });
-
+    let request=[];
     var heartBeat = setInterval(() => {
         userRepo.getUserStatus(req.query.userName).then(rows=>{
             if(rows.length>0 && rows[0].Status==='READY'){
@@ -29,18 +29,28 @@ var subscribeEventDriver = (req, res, event) => {
                                 };
                                     if (min===0 || min>haversine(start, end, {unit: 'meter'}))
                                     {
-                                        min=haversine(start, end, {unit: 'meter'});
-                                        index=i;
+                                        let temp=0;
+                                        for (var j=0;j<request.length;j++){
+                                            if (request[j].id_request===rows2[i].id_request){
+                                                temp=temp+1;
+                                            }
+                                        }
+                                        if (temp===0){
+                                            min=haversine(start, end, {unit: 'meter'});
+                                            index=i;
+                                        }
                                     }
                             }
                         }
                         if (index!==-1){
+                            request.push(rows2[index]);
                             var json = JSON.stringify(rows2[index]);
                             res.write(`retry: 500\n`);
                             res.write(`event: DRIVER_RECEIVE\n`);
                             res.write(`data: ${json}\n`);
                             res.write(`\n`);
                         }else {
+                            request=[];
                             res.write('\n');
                         }
 
@@ -54,7 +64,7 @@ var subscribeEventDriver = (req, res, event) => {
                 res.write('\n');
             }
         })
-    }, 5000);
+    }, 9000);
 
     var handler = data => {
         var json = JSON.stringify(data);
@@ -107,6 +117,9 @@ var subscribeEvent = (req, res, event) => {
 var REQUEST_ADDED = 'REQUEST_ADDED';
 var REQUEST_REMOVE = 'REQUEST_REMOVE';
 var DRIVER_RECEIVE='DRIVER_RECEIVE';
+
+var DRIVER_LOCALE='DRIVER_LOCALE';
+
 var subscribeRequestAdded = (req, res) => {
     subscribeEvent(req, res, REQUEST_ADDED);
 };
@@ -116,7 +129,9 @@ var subscribeRequestRemove = (req, res) => {
 var subscribeDriverReceive = (req, res) => {
     subscribeEventDriver(req, res, DRIVER_RECEIVE);
 };
-
+var subscribeDriverLocale = (req, res) => {
+    subscribeEvent(req, res, DRIVER_LOCALE);
+};
 
 
 var publishRequestAdded = requestObj => {
@@ -125,11 +140,16 @@ var publishRequestAdded = requestObj => {
 var publishRequestRemove = requestObj => {
     emitter.emit(REQUEST_REMOVE, requestObj);
 };
+var publishDriverLocale = requestObj => {
+    emitter.emit(DRIVER_LOCALE, requestObj);
+};
 
 module.exports = {
     subscribeRequestAdded,
     publishRequestAdded,
     publishRequestRemove,
     subscribeRequestRemove,
-    subscribeDriverReceive
+    subscribeDriverReceive,
+    publishDriverLocale,
+    subscribeDriverLocale
 }
