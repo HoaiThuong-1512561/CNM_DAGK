@@ -8,137 +8,107 @@
 	 crossorigin="anonymous" />
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.4/themes/base/jquery-ui.css"/> -->
-
 	<style>
-
-		#map{
-			height: 100vh;
-			width: 80vw;
-			margin: 0px;
-			padding: 0px;
+		#map{			
+			margin-top:-35px;
+			margin-left: -35px;
+			margin-right: -35px;
+			width: 450px;
+            height: 500px;			
+		}
+		.btn1 {
+			background-color:red;
+			color: rgb(255, 255, 255);
+			margin-top: 15px;
+			cursor: pointer;
+			width: 160px;
+			height: 40px;
+			border: none;			
+			border-radius: 5px;			
+		}
+		.btn2 {
+			background-color:red;
+			color: rgb(255, 255, 255);		
+			cursor: pointer;
+			width: 160px;
+			height: 40px;
+			border: none;	
+			margin-left: 70px;		
+			margin-top: -7px;
+			border-radius: 5px;	
 		}
 		html, body {
 			height: 100%;
 			margin: 0;
 			padding: 0;
 		}
-
-		.ui-widget {
-			font-family: Verdana,Arial,sans-serif;
-			font-size: .8em;
+		* {
+			box-sizing: border-box;
 		}
-
-		.ui-widget-content {
-			background: #F9F9F9;
-			border: 1px solid #90d93f;
-			color: #222222;
-
+		.bg-img {
+			background-image: url("../Image/bg2.jpg");
+			height: 100%;
+			background-position: center;
+			background-repeat: no-repeat;
+			background-size: cover;
+			position: relative;
 		}
-
-		.ui-dialog {
-			left: 0;
-			outline: 0 none;
-			padding: 0 !important;
-			position: absolute;
-			top: 5px;
-		}
-
 		#dialog {
 			padding: 16px !important;
 			margin: 0;
-
-		}
-
-		.ui-dialog .ui-dialog-content {
-			background: none repeat scroll 0 0 transparent;
-			border: 0 none;
-			overflow: auto;
-			position: relative;
-			padding: 0 !important;
-			text-align: center;
-			height: 104px !important;
-		}
-
-		.ui-widget-header {
-			background: #b0de78;
-			border: 0;
-			color: #fff;
-			font-weight: normal;
-			text-align: center;
-		}
-
-		.ui-dialog .ui-dialog-titlebar {
-			padding: 0.1em .5em;
-			position: relative;
-			font-size: 1em;
-		}
-		.ui-dialog-titlebar button{
-			background-image: url(images/ui-icons_777777_256x240.png);
-		}
-
-		#cancel{
-			margin-left: 238px;
-			margin-top: 16px;
-			background-color: green;
-		}
-		#accept{
-			margin-left: 155px;
-			margin-bottom: 16px;
-			background-color: gray;
-		}
-		.container{
-
 		}
 		.containerdesign {
 			position: absolute;
-			left: 600px;
-			margin-top:200px;
-			max-width: 450px;
+			left: 550px;
+			margin-top:80px;
+			width: 480px;
+			height: 640px;;
 			padding: 50px;
 			background-color: white;
 			border-radius: 10px;
-		}
-		.bg-img {
-
+			border-color: black;
+			border: 1px;
 		}
 		.btn {
-
-		}
+			background-color:red;
+			color: rgb(255, 255, 255);
+			padding: 16px 20px;
+			margin-top: 50px;
+			border: none;
+			cursor: pointer;
+			width: 100%;
+			opacity: 0.9;
+			position: relative;
+		}		
 		.btn:hover {
 			opacity: 1;
 		}
-
-			#cancel{
-				margin-left: 238px;
-				margin-top: 16px;
-				background-color: green;
-			}
-			#accept{
-				margin-left: 155px;
-				margin-bottom: 16px;
-				background-color: gray;
-			}
-
-			.endTrip{
-			    position: relative;
-				left: 140px;
-				bottom: 22px;
-			}
-
-			.updateDriverLocation{
-				position: relative;
-   				 top: 11px;
-			}
+		.endTrip{
+			position: relative;
+			left: 140px;
+			bottom: 22px;
+		}
+		.updateDriverLocation{
+			position: relative;
+				top: 11px;
+		}
+		.updateposition{
+		color: red;
+		background-color:white;
+		text-align: center;
+		margin-top: 5px;
+		}
+		.labeldesign{
+			margin-top: 60px;
+		}
 		</style>
 </head>
-
-
 <body>
 	<div class="bg-img">
-		<div class="container" id="container">
-			<div id="login" v-if="loginVisible">
+		<div id="container"class="containerdesign">
+			<div  id="login" v-if="loginVisible">
 				<h2 style="text-align:center">Đăng nhập tài khoản</h2>
-				<div class="form-group">
+				<div class="form-group labeldesign">
 					<label>Tên đăng nhập:</label>
 					<input type="text" class="form-control" placeholder="Nhập tên..." v-model="userName">
 				</div>
@@ -169,7 +139,6 @@
 						  <td>
 							  <button class="btn btn-success" type="button" @click="updateUserStatus">Đổi</button>
 						  </td>
-
 					  </tr>
 					</tbody>
 				</table>
@@ -179,7 +148,6 @@
 				</div>
 				<div style="color: darkgreen" v-if="second === 0">Không có request mới</div>
 				<div style="color: darkgreen" v-if="second > 0">Làm mới request trong...{{second}}s</div>
-
 			</div>
 			<div v-if="dialogVisible">
 				<div style="color: red">{{err}}</div>
@@ -204,33 +172,25 @@
 					</tr>
 					</tbody>
 				</table>
-				<button class="btn btn-success" type="button" @click="notifyRequestTimeout">Nhận yêu cầu</button>
+				<button class="btn1 btn-success" type="button" @click="notifyRequestTimeout">Nhận yêu cầu</button>
 			</div>
-			<div id="Gmap" v-if="mapVisible">
-				<div style="color: green">{{msg}}</div>
-				<div style="color: red">{{err}}</div>
+			<div id="Gmap" v-if="mapVisible">							
 				<div id="map" class="map"></div>
+				<div class="updateposition" style="color: green">{{msg}}</div>
+				<div class="updateposition" style="color: red">{{err}}</div>	
 				<div class="updateDriverLocation" >
-					<button class="btn btn-success" type="button" @click="updateDriverLocation">Cập nhật vị trí</button>
+					<button class="btn1 btn-success" type="button" @click="updateDriverLocation">Cập nhật vị trí</button>
 				</div>
 				<div class="endTrip" >
-					<button type="button" class="btn btn-success" @click="closeMap">Kết thúc</button>
-				</div>
+					<button type="button" class="btn2 btn-success" @click="closeMap">Kết thúc</button>
+				</div>				
 			</div>
-
-
 		</div>
 	</div>
-
-
-
-
-
 	<script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 	<script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
 	<script src="https://cdn.datatables.net/1.10.19/js/dataTables.bootstrap.min.js"></script>
-
 	<script src="https://cdn.jsdelivr.net/npm/vue"></script>
 	<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
 	 crossorigin="anonymous">
@@ -238,14 +198,8 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
 	<script src="index.app.js"></script>
 	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
-
-
-
 	<script async defer
 			src="https://maps.googleapis.com/maps/api/js?key=AIzaSyB4qFj8fv3AYqhSvBiSvCkPWB89NhfSOvY&callback">
 	</script>
-
-
 </body>
-
 </html>

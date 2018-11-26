@@ -36,6 +36,12 @@ var vm = new Vue({
         msg:"",
         err:"",
 
+        refname:"",
+        name:"",
+        phone:"",
+        address:"",
+        note:"",
+
         numDeltas : 100,
         delay : 10,
         i : 0,
@@ -55,6 +61,7 @@ var vm = new Vue({
                     self.loginVisible=false;
                     self.token=response.data.access_token;
                     self.refToken=response.data.refresh_token;
+                    self.refname=response.data.r
                     self.getAllRequest();
                 })
                 .catch(function (error) {
@@ -65,5 +72,65 @@ var vm = new Vue({
                     }
                 })
         },
+        getAllRequest:function(){
+            var self = this;
+            axios.get('http://localhost:3000/api/request/getAllRequestApp1',{ headers: { token: self.token } })
+                .then(function (response) {
+                    self.requests=response.data;
+                    self.refDataTable();
+                })
+                .catch(function (error) {
+                    if (error.response.status===401){
+                        new Promise(function (resolve) {
+                            self.refreshToken();
+                            self.getUserInfo();
+                            resolve();
+                        }).then(function () {
+                            if (self.requestsVisible===true){
+                                self.getAllRequest();
+                            }
+                        })
+                        return;
+                    }
+                }).then(function () {
+            });
+        },
+        refreshToken:function () {
+            var self = this;
+            console.log("ref");
+            axios.post('http://localhost:3000/api/users/refreshToken', {
+                refToken: self.refToken,
+            })
+                .then(function (response) {
+                    self.token=response.data.access_token;
+                })
+                .catch(function (error) {
+                    if (error.response.status===401){
+                        self.loginVisible=true;
+                        self.requestsVisible=false;
+                        self.mapVisible=false;
+                    }
+                }).then(function () {
+            })
+        },
+        getUserInfo:function(){
+            var self = this;
+            console.log("ref");
+            axios.post('http://localhost:3000/api/request/getUserInfo', {
+                refname: self.userName,
+            })
+                .then(function (response) {
+                    self.name=response.data.userName;
+                })
+                .catch(function (error) {
+                    if (error.response.status===401){
+                        self.loginVisible=true;
+                        self.requestsVisible=false;
+                        // self.mapVisible=false;
+                    }
+                }).then(function () {
+            })
+        }
+        
     }        
 })
