@@ -9,33 +9,36 @@
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.4/themes/base/jquery-ui.css"/> -->
 	<style>
-		#map{			
-			margin-top:-35px;
-			margin-left: -35px;
-			margin-right: -35px;
-			width: 450px;
-            height: 500px;			
+		#map{						
+			/* width: 100%; */
+			height: 90%;	
+		}
+		.mapdesign {			
+			width: 100%;
+			height: 100%;;			
+			background-color: white;			
 		}
 		.btn1 {
-			background-color:red;
+			background-color: red;
 			color: rgb(255, 255, 255);
 			margin-top: 15px;
+			margin-left: 150px;
 			cursor: pointer;
-			width: 160px;
-			height: 40px;
-			border: none;			
-			border-radius: 5px;			
+			width: 300px;
+			height: 100px;
+			border: none;
+			border-radius: 5px;		
 		}
 		.btn2 {
-			background-color:red;
-			color: rgb(255, 255, 255);		
+			background-color: red;
+			color: rgb(255, 255, 255);
+			/* margin-top: -90px; */
 			cursor: pointer;
-			width: 160px;
-			height: 40px;
-			border: none;	
-			margin-left: 70px;		
-			margin-top: -7px;
-			border-radius: 5px;	
+			width: 300px;
+			height: 100px;
+			border: none;
+			/* margin-right: 150px; */
+			border-radius: 5px;
 		}
 		html, body {
 			height: 100%;
@@ -51,7 +54,7 @@
 			background-position: center;
 			background-repeat: no-repeat;
 			background-size: cover;
-			position: relative;
+			/* position: relative; */
 		}
 		#dialog {
 			padding: 16px !important;
@@ -59,10 +62,10 @@
 		}
 		.containerdesign {
 			position: absolute;
-			left: 550px;
-			margin-top:80px;
-			width: 480px;
-			height: 640px;;
+			left: 150px;
+			margin-top:500px;
+			width: 70%;
+			height: 40%;;
 			padding: 50px;
 			background-color: white;
 			border-radius: 10px;
@@ -83,14 +86,9 @@
 		.btn:hover {
 			opacity: 1;
 		}
-		.endTrip{
-			position: relative;
-			left: 140px;
-			bottom: 22px;
-		}
 		.updateDriverLocation{
 			position: relative;
-				top: 11px;
+			top: 11px;
 		}
 		.updateposition{
 		color: red;
@@ -99,14 +97,31 @@
 		margin-top: 5px;
 		}
 		.labeldesign{
+			height: 100px;
 			margin-top: 60px;
+		}
+		.body{
+			background-color: white;
+			height: 100%;
+			width: 100%;
+		}
+		.entrip{
+			margin-left: 550px;
+			margin-top: -98px;
+			position: relative;
+			top: 11px;
+		}
+		.container{
+			
+			width: 100%;
+			height: 100%;
 		}
 		</style>
 </head>
 <body>
 	<div class="bg-img">
-		<div id="container"class="containerdesign">
-			<div  id="login" v-if="loginVisible">
+		<div id="container" class="container">
+			<div  id="login" v-if="loginVisible" class="containerdesign">
 				<h2 style="text-align:center">Đăng nhập tài khoản</h2>
 				<div class="form-group labeldesign">
 					<label>Tên đăng nhập:</label>
@@ -119,7 +134,7 @@
 				<div style="color: red">{{err}}</div>
 				<button type="button" class="btn btn-success" @click="login">Đăng nhập</button>
 			</div>
-			<div v-if="requestsVisible">
+			<div v-if="requestsVisible" class="body">
 				<div style="color: green">{{msg}}</div>
 				<h1>Thông tin tài xế</h1>
 				<table class="table table-hover border">
@@ -149,7 +164,7 @@
 				<div style="color: darkgreen" v-if="second === 0">Không có request mới</div>
 				<div style="color: darkgreen" v-if="second > 0">Làm mới request trong...{{second}}s</div>
 			</div>
-			<div v-if="dialogVisible">
+			<div v-if="dialogVisible" class="body">
 				<div style="color: red">{{err}}</div>
 				<h1>Thông tin đặt xe</h1>
 				<table class="table table-hover border">
@@ -174,14 +189,14 @@
 				</table>
 				<button class="btn1 btn-success" type="button" @click="notifyRequestTimeout">Nhận yêu cầu</button>
 			</div>
-			<div id="Gmap" v-if="mapVisible">							
+			<div id="Gmap" v-if="mapVisible" class="body">							
 				<div id="map" class="map"></div>
 				<div class="updateposition" style="color: green">{{msg}}</div>
 				<div class="updateposition" style="color: red">{{err}}</div>	
 				<div class="updateDriverLocation" >
 					<button class="btn1 btn-success" type="button" @click="updateDriverLocation">Cập nhật vị trí</button>
 				</div>
-				<div class="endTrip" >
+				<div class="entrip" >
 					<button type="button" class="btn2 btn-success" @click="closeMap">Kết thúc</button>
 				</div>				
 			</div>
