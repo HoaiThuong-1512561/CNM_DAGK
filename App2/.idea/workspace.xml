@@ -2,21 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="74f6586e-2e8d-4aa4-ad45-0d456b6e3ac1" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../App3/.idea/App3.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../App3/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../App3/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../App3/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../App3/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App1/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../App1/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App1/index.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../App1/index.app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../App1/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../App3/index.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../App3/index.app.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../App3/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../App3/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../App4/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../App4/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../App4/index.app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../App4/index.app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../App4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/../App4/index.html" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../Server/apiControllers/app1Controller.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/apiControllers/app1Controller.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Server/apiControllers/requestController.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/apiControllers/requestController.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/app.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/app.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/events.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/events.js" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../Server/repos/requestRepo.js" beforeDir="false" afterPath="$PROJECT_DIR$/../Server/repos/requestRepo.js" afterDir="false" />
     </list>
     <ignored path="$PROJECT_DIR$/.tmp/" />
     <ignored path="$PROJECT_DIR$/temp/" />
@@ -103,10 +98,10 @@
     <session id="-359477042">
       <usages-collector id="statistics.lifecycle.project">
         <counts>
-          <entry key="project.closed" value="3" />
-          <entry key="project.open.time.1" value="2" />
+          <entry key="project.closed" value="5" />
+          <entry key="project.open.time.1" value="4" />
           <entry key="project.open.time.17" value="1" />
-          <entry key="project.opened" value="3" />
+          <entry key="project.opened" value="5" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
@@ -121,24 +116,34 @@
           <entry key="JavaScript" value="1" />
         </counts>
       </usages-collector>
+      <usages-collector id="statistics.file.extensions.edit">
+        <counts>
+          <entry key="html" value="36" />
+        </counts>
+      </usages-collector>
+      <usages-collector id="statistics.file.types.edit">
+        <counts>
+          <entry key="HTML" value="36" />
+        </counts>
+      </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/index.html">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="346">
-              <caret line="201" selection-start-line="201" selection-end-line="202" />
+            <state relative-caret-position="180">
+              <caret line="99" column="41" selection-start-line="99" selection-start-column="41" selection-end-line="99" selection-end-column="41" />
             </state>
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/index.app.js">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="308">
-              <caret line="166" column="23" lean-forward="true" selection-start-line="152" selection-start-column="20" selection-end-line="166" selection-end-column="23" />
+            <state relative-caret-position="100">
+              <caret line="77" column="24" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -156,8 +161,8 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/index.html" />
         <option value="$PROJECT_DIR$/index.app.js" />
+        <option value="$PROJECT_DIR$/index.html" />
       </list>
     </option>
   </component>
@@ -202,7 +207,7 @@
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../App3" />
     <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
     <property name="nodejs_npm_path_reset_for_default_project" value="true" />
   </component>
@@ -244,15 +249,16 @@
       <workItem from="1542711379169" duration="781000" />
       <workItem from="1542723059050" duration="15000" />
       <workItem from="1542791416390" duration="1374000" />
+      <workItem from="1543404244905" duration="1679000" />
+      <workItem from="1543408102328" duration="121000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="40303000" />
+    <option name="totallyTimeSpent" value="42103000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="54" y="-8" width="1320" height="784" extended-state="6" />
-    <editor active="true" />
     <layout>
       <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.24960998" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
@@ -343,17 +349,17 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.html">
+    <entry file="file://$PROJECT_DIR$/index.app.js">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="346">
-          <caret line="201" selection-start-line="201" selection-end-line="202" />
+        <state relative-caret-position="100">
+          <caret line="77" column="24" selection-start-line="77" selection-start-column="16" selection-end-line="77" selection-end-column="24" />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/index.app.js">
+    <entry file="file://$PROJECT_DIR$/index.html">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="308">
-          <caret line="166" column="23" lean-forward="true" selection-start-line="152" selection-start-column="20" selection-end-line="166" selection-end-column="23" />
+        <state relative-caret-position="180">
+          <caret line="99" column="41" selection-start-line="99" selection-start-column="41" selection-end-line="99" selection-end-column="41" />
         </state>
       </provider>
     </entry>

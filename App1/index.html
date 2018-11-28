@@ -2,17 +2,18 @@
 <html>
 	<head>
 		<title>APP #1: REQUEST RECEIVER</title>
-		<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">
+        <meta charset="utf-8">
+		<!--<meta name="viewport" content="width=device-width, initial-scale=1" charset="utf-8">-->
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
 	</head>
 	<style>
 		body, html {
 			height: 100%;
 			font-family: Arial, Helvetica, sans-serif;
-		}		
+		}
 		* {
 			box-sizing: border-box;
-		}		
+		}
 		.bg-img {
 			background-image: url("../Image/bg2.jpg");
 			/* background-color: #4CAF50; */
@@ -31,7 +32,7 @@
 			background-color: white;
 			border-radius: 10px;
 		}
-		.containerdesign {			
+		.containerdesign {
 			position: absolute;
 			left: 600px;
 			margin-top:200px;
@@ -39,14 +40,14 @@
 			padding: 50px;
 			background-color: white;
 			border-radius: 10px;
-		}							
+		}
 		input[type=text], input[type=password] {
 			width: 100%;
 			padding: 15px;
 			margin: 5px 0 22px 0;
 			border: none;
 			background: #f1f1f1;
-		}						
+		}
 		.btn {
 			background-color:red;
 			color: rgb(255, 255, 255);
@@ -55,7 +56,7 @@
 			cursor: pointer;
 			width: 100%;
 			opacity: 0.9;
-		}			
+		}
 		.btn:hover {
 			opacity: 1;
 		}
@@ -63,63 +64,49 @@
 	<body>
 		<div class="bg-img">
 			<div  id="container">
-				<div class="containerdesign" id="login" v-if="loginVisible">
-				<h2 style="text-align:center">Đăng nhập tài khoản</h2>
-				<div class="form-group">
-					<label>Tên đăng nhập:</label>
-					<input type="text" class="form-control" placeholder="Nhập tên..." v-model="userName">
-				</div>
-				<div class="form-group">
-					<label >Mật khẩu:</label>
-					<input type="text" class="form-control" v-model="password">
-				</div>
-				<button type="button" class="btn btn-success" @click="login">Đăng nhập</button>
+                <div class="containerdesign" id="login" v-if="loginVisible">
+				    <h2 style="text-align:center">Đăng nhập tài khoản</h2>
+                    <div class="form-group">
+                        <label>Tên đăng nhập:</label>
+                        <input type="text" class="form-control" placeholder="Nhập tên đăng nhập..." v-model="userName">
+                    </div>
+                    <div class="form-group">
+                        <label >Mật khẩu:</label>
+                        <input type="password" placeholder="Nhập mật khẩu..." class="form-control" v-model="password">
+                    </div>
+                    <div style="color: red">{{err}}</div>
+				    <button type="button" class="btn btn-success" @click="login">Đăng nhập</button>
+			    </div>
+
+                <div class ="container" v-if="requestsVisible">
+                    <form  >
+                        <h2 style="text-align:center">Nhận Thông Tin Khách Hàng</h2>
+
+                        <div style="color: green">{{msg}}</div>
+                        <label for="name"><b>Họ Tên Khách Hàng</b></label>
+                        <input type="text" placeholder="Tên khách hàng" id="name" v-model="name">
+
+                        <label for="phone"><b>Số điện thoại</b></label>
+                        <input type="text" placeholder="+84... " id="phone" v-model="phone">
+
+                        <label for="address"><b>Địa chỉ</b></label>
+                        <input type="text" placeholder="Địa chỉ" id="address" v-model="address">
+
+                        <label for="note"><b>Ghi chú</b></label>
+                        <input type="text" placeholder="Ghi chú" id="note" v-model="note">
+
+                        <button type="button" @click="addRequest" class="btn btn-success" id="btnSubmit">Nhận Chuyến</button>
+
+                    </form>
+                </div>
 			</div>
-			</div>	
 		</div>
-		<form class ="container"v-if="requestsVisible">			
-			<h2 style="text-align:center">Nhận Thông Tin Khách Hàng</h2>	
-			<label for="name"><b>Họ Tên Khách Hàng</b></label>
-			<!-- <label type="text" placeholder="Tên khách hàng" id="name" >	
-			<label for="phone"><b>Số điện thoại</b></label>
-			<label type="text" placeholder="+84... " id="phone" >					
-			<label for="address"><b>Địa chỉ</b></label>
-			<label type="text" placeholder="Địa chỉ" id="address" >					
-			<label for="note"><b>Ghi chú</b></label>
-			<label type="text" placeholder="Ghi chú" id="note" >	 -->
-				<label type="text" placeholder="Tên khách hàng" id="name" >	
-				<label for="phone"><b>Số điện thoại</b></label>
-				<label type="text" placeholder="+84... " id="phone" >					
-				<label for="address"><b>Địa chỉ</b></label>
-				<label type="text" placeholder="Địa chỉ" id="address" >					
-				<label for="note"><b>Ghi chú</b></label>
-				<label type="text" placeholder="Ghi chú" id="note" >	
-			<button type="submit" class="btn btn-success" id="btnSubmit">Nhận Chuyến</button>
-		</div>
-			<!-- <div class="bg-img">
-			<form  class="container">
-				<h2 style="text-align:center">Nhận Thông Tin Khách Hàng</h2>
-
-				<label for="name"><b>Họ Tên Khách Hàng</b></label>
-				<input type="text" placeholder="Tên khách hàng" id="name" >
-
-				<label for="phone"><b>Số điện thoại</b></label>
-				<input type="text" placeholder="+84... " id="phone" >
-				
-				<label for="address"><b>Địa chỉ</b></label>
-				<input type="text" placeholder="Địa chỉ" id="address" >
-				
-				<label for="note"><b>Ghi chú</b></label>
-				<input type="text" placeholder="Ghi chú" id="note" >
-
-				<button type="submit" class="btn btn-success" id="btnSubmit">Nhận Chuyến</button>
-			</form>
-			</div> -->
-
-		<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+        <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
 		<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.12/handlebars.min.js"></script>
 			<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
 		<script src="index.app.js"></script>
-	</body>
+
+    </body>
 </html>
