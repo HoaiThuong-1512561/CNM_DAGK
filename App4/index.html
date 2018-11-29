@@ -9,13 +9,13 @@
 	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css" />
 	<!-- <link rel="stylesheet" href="//code.jquery.com/ui/1.12.4/themes/base/jquery-ui.css"/> -->
 	<style>
-		/* #map{			
-			height: 90%;	
+		/* #map{
+			height: 90%;
 		}
-		.mapdesign {			
+		.mapdesign {
 			width: 100%;
-			height: 100%;;			
-			background-color: white;			
+			height: 100%;;
+			background-color: white;
 		}
 		.btn1 {
 			background-color: red;
@@ -26,15 +26,15 @@
 			width: 300px;
 			height: 100px;
 			border: none;
-			border-radius: 5px;		
+			border-radius: 5px;
 		}
 		.btn2 {
 			background-color: red;
-			color: rgb(255, 255, 255);			
+			color: rgb(255, 255, 255);
 			cursor: pointer;
 			width: 300px;
 			height: 100px;
-			border: none;			
+			border: none;
 			border-radius: 5px;
 		}
 		html, body {
@@ -50,7 +50,7 @@
 			height: 100%;
 			background-position: center;
 			background-repeat: no-repeat;
-			background-size: cover;			
+			background-size: cover;
 		}
 		#dialog {
 			padding: 16px !important;
@@ -78,7 +78,7 @@
 			width: 100%;
 			opacity: 0.9;
 			position: relative;
-		}		
+		}
 		.btn:hover {
 			opacity: 1;
 		}
@@ -108,17 +108,17 @@
 			top: 11px;
 		}
 		.container{
-			
+
 			width: 100%;
 			height: 100%;
 		} */
-					
-		#map{				
+
+		#map{
 			margin-top:-35px;
 			margin-left: -35px;
 			margin-right: -35px;
 			width: 450px;
-			height: 500px;			
+			height: 500px;
 		}
 		.btn1 {
 			background-color:red;
@@ -127,26 +127,26 @@
 			cursor: pointer;
 			width: 160px;
 			height: 40px;
-			border: none;			
-			border-radius: 5px;			
+			border: none;
+			border-radius: 5px;
 		}
 		.btn2 {
 			background-color:red;
-			color: rgb(255, 255, 255);		
+			color: rgb(255, 255, 255);
 			cursor: pointer;
 			width: 160px;
 			height: 40px;
-			border: none;	
-			margin-left: 70px;		
+			border: none;
+			margin-left: 70px;
 			margin-top: -7px;
-			border-radius: 5px;	
+			border-radius: 5px;
 			margin-left: 220px;
 		}
 		html, body {
-			height: 100%;				
-			margin: 0;			
-			padding: 0;				
-		}			
+			height: 100%;
+			margin: 0;
+			padding: 0;
+		}
 		* {
 			box-sizing: border-box;
 		}
@@ -158,8 +158,8 @@
 			background-size: cover;
 			position: relative;
 		}
-		#dialog {			
-			padding: 16px !important;			
+		#dialog {
+			padding: 16px !important;
 			margin: 0;
 		}
 		.containerdesign {
@@ -173,7 +173,7 @@
 			border-radius: 10px;
 			border-color: black;
 			border: 1px;
-		}				
+		}
 		.btn {
  			background-color:red;
 			color: rgb(255, 255, 255);
@@ -184,16 +184,16 @@
 			width: 100%;
 			opacity: 0.9;
 			position: relative;
-		}	
-		.btn:hover {			
-			opacity: 1;			
-			}	
-		
+		}
+		.btn:hover {
+			opacity: 1;
+			}
+
 		.endTrip{
-			margin-top: -23px;
+			margin-top: -32px;
 		}
 		.updateDriverLocation{
-			position: relative;
+
 			top: 11px;
 		}
 		.updateposition{
@@ -211,15 +211,15 @@
 	<div class="bg-img">
 		<div id="container" class="containerdesign">
 			<!-- <div  id="login" v-if="loginVisible" class="containerdesign"> -->
-			<div  id="login" v-if="loginVisible">				
+			<div  id="login" v-if="loginVisible">
 				<h2 style="text-align:center">Đăng nhập tài khoản</h2>
 				<div class="form-group labeldesign">
 					<label>Tên đăng nhập:</label>
-					<input type="text" class="form-control" placeholder="Nhập tên..." v-model="userName">
+					<input type="text" class="form-control" placeholder="Nhập tên đăng nhập..." v-model="userName">
 				</div>
 				<div class="form-group">
 					<label>Mật khẩu:</label>
-					<input type="text" class="form-control" v-model="password">
+					<input type="password" placeholder="Nhập mật khẩu..." class="form-control" v-model="password">
 				</div>
 				<div style="color: red">{{err}}</div>
 				<button type="button" class="btn btn-success" @click="login">Đăng nhập</button>
@@ -279,16 +279,16 @@
 				</table>
 				<button class="btn1 btn-success" type="button" @click="notifyRequestTimeout">Nhận yêu cầu</button>
 			</div>
-			<div id="Gmap" v-if="mapVisible" class="body">							
+			<div id="Gmap" v-if="mapVisible" class="body">
 				<div id="map" class="map"></div>
 				<div class="updateposition" style="color: green">{{msg}}</div>
-				<div class="updateposition" style="color: red">{{err}}</div>	
+				<div class="updateposition" style="color: red">{{err}}</div>
 				<div class="updateDriverLocation" >
 					<button class="btn1 btn-success" type="button" @click="updateDriverLocation">Cập nhật vị trí</button>
 				</div>
 				<div class="endTrip" >
 					<button type="button" class="btn2 btn-success" @click="closeMap">Kết thúc</button>
-				</div>				
+				</div>
 			</div>
 		</div>
 	</div>
